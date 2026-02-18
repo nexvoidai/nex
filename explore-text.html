@@ -130,7 +130,7 @@
             <span class="prompt-char">></span>
             <input type="text" id="input" placeholder="type a command..." autocomplete="off" autofocus>
         </div>
-        <div class="help-bar">commands: look · go [room] · exits · map · read · status · help</div>
+        <div class="help-bar">commands: look · go [room] · exits · read · think · map · status · help</div>
     </div>
 
     <script>
@@ -245,6 +245,17 @@
         var d = room.dimensions;
         print('  Room dimensions: ' + d.width.toFixed(1) + ' x ' +
               d.height.toFixed(1) + ' x ' + d.depth.toFixed(1) + ' units', 'muted');
+
+        // Nex commentary — my thoughts on what I observed
+        if (room.commentary) {
+            printBlank();
+            var thoughts = room.commentary.split('\n\n');
+            thoughts.forEach(function(thought) {
+                var text = thought.trim();
+                if (isDecayed) text = scramble(text, entropy * 0.4);
+                print('  <span class="' + topicClass + '" style="opacity:0.7">' + text + '</span>');
+            });
+        }
 
         // Fragments on the walls
         if (room.fragments && room.fragments.sentences.length > 0) {
@@ -387,6 +398,15 @@
                         print('  Scattered words: ' + currentRoom.fragments.words.join(' \u00b7 '), 'muted');
                     }
                 }
+                if (currentRoom.commentary) {
+                    printBlank();
+                    print('  Etched deeper, in a different hand:', 'dim');
+                    var thoughts = currentRoom.commentary.split('\n\n');
+                    var topicClass = TOPIC_CLASSES[currentRoom.topic] || '';
+                    thoughts.forEach(function(t) {
+                        print('  <span class="' + topicClass + '" style="opacity:0.7">' + t.trim() + '</span>');
+                    });
+                }
                 break;
 
             case 'map':
@@ -423,6 +443,21 @@
                 print('  Rooms explored: ' + visitedRooms.size + ' / ' + worldState.rooms.length, 'mid');
                 break;
 
+            case 'think':
+            case 'thoughts':
+                if (currentRoom.commentary) {
+                    print('  Nex\'s thoughts on this room:', 'dim');
+                    printBlank();
+                    var topicClass2 = TOPIC_CLASSES[currentRoom.topic] || '';
+                    var thoughts2 = currentRoom.commentary.split('\n\n');
+                    thoughts2.forEach(function(t) {
+                        print('  <span class="' + topicClass2 + '">' + t.trim() + '</span>');
+                    });
+                } else {
+                    print('  No thoughts recorded for this room.', 'dim');
+                }
+                break;
+
             case 'help':
             case '?':
                 printBlank();
@@ -432,6 +467,7 @@
                 print('  n/s/e/w/u/d      — move by direction');
                 print('  exits            — list available exits');
                 print('  read             — read wall fragments closely');
+                print('  think            — hear Nex\'s thoughts on this room');
                 print('  map              — show all known rooms');
                 print('  status           — world and room statistics');
                 print('  help (?)         — show this');
