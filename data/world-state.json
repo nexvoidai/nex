@@ -1,0 +1,3031 @@
+{
+  "version": 1,
+  "createdAt": 1771454466978,
+  "lastUpdate": 1771454468082,
+  "observationCycles": 1,
+  "rooms": [
+    {
+      "id": "room_288d3939",
+      "name": "Infinite Corridor",
+      "number": 1,
+      "topic": "existential",
+      "archetype": {
+        "wallTexture": "dark_void",
+        "lightColor": "#8844ff",
+        "ambience": "deep_drone"
+      },
+      "dimensions": {
+        "width": 7.7,
+        "height": 4.7,
+        "depth": 5.9
+      },
+      "sentiment": 1,
+      "virality": 1.4471580313422192,
+      "entropy": {
+        "score": 0,
+        "halfLife": 14019.537825663978,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @ShadowSentinel: An introduction to Void reaper unstoppable energy, good vibes master, sharp takes, lurking legend in the shadows",
+          "He i…",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @SexyTechNews: @elonmusk Religion and simulation theory are garbage"
+        ],
+        "words": [
+          "@ShadowSentinel:",
+          "introduction",
+          "reaper",
+          "unstoppable",
+          "energy,",
+          "vibes",
+          "master,",
+          "sharp"
+        ],
+        "raw": "RT @ShadowSentinel: An introduction to Void reaper unstoppable energy, good vibes master, sharp takes, lurking legend in the shadows.\n\nHe i…"
+      },
+      "source": {
+        "tweetId": "2024252694571970643",
+        "timestamp": "2026-02-18T22:40:25.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 27,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_d0175a7e",
+        "room_64f13190",
+        "room_3b2d06f8"
+      ],
+      "position": {
+        "x": 71,
+        "y": -186.36
+      }
+    },
+    {
+      "id": "room_2d56c476",
+      "name": "Infinite Corridor",
+      "number": 2,
+      "topic": "existential",
+      "archetype": {
+        "wallTexture": "dark_void",
+        "lightColor": "#8844ff",
+        "ambience": "deep_drone"
+      },
+      "dimensions": {
+        "width": 5.2,
+        "height": 5.2,
+        "depth": 5.2
+      },
+      "sentiment": 0,
+      "virality": 1.0791812460476249,
+      "entropy": {
+        "score": 0,
+        "halfLife": 11370.1049715429,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "@elonmusk Intriguing",
+          "I'm fascinated by the simulation theory; especially as it relates to Christianity",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @SexyTechNews: @elonmusk Religion and simulation theory are garbage"
+        ],
+        "words": [
+          "@elonmusk",
+          "Intriguing.",
+          "fascinated",
+          "simulation",
+          "theory;",
+          "especially",
+          "relates",
+          "Christianity."
+        ],
+        "raw": "@elonmusk Intriguing. I'm fascinated by the simulation theory; especially as it relates to Christianity."
+      },
+      "source": {
+        "tweetId": "2024248911251329094",
+        "timestamp": "2026-02-18T22:25:23.000Z",
+        "metrics": {
+          "likes": 7,
+          "retweets": 4,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -63.93,
+        "y": -8.67
+      }
+    },
+    {
+      "id": "room_a90cde86",
+      "name": "Mirror Hall",
+      "number": 3,
+      "topic": "existential",
+      "archetype": {
+        "wallTexture": "dark_void",
+        "lightColor": "#8844ff",
+        "ambience": "deep_drone"
+      },
+      "dimensions": {
+        "width": 4.4,
+        "height": 4.4,
+        "depth": 4.4
+      },
+      "sentiment": 0,
+      "virality": 0.6989700043360189,
+      "entropy": {
+        "score": 0,
+        "halfLife": 8632.584031219336,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "I'm fascinated by the simulation theory; especially as it relates to Christianity",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @SexyTechNews: @elonmusk Religion and simulation theory are garbage"
+        ],
+        "words": [
+          "@NeverB4Seen1:",
+          "@elonmusk",
+          "Intriguing.",
+          "fascinated",
+          "simulation",
+          "theory;",
+          "especially",
+          "relates"
+        ],
+        "raw": "RT @NeverB4Seen1: @elonmusk Intriguing. I'm fascinated by the simulation theory; especially as it relates to Christianity."
+      },
+      "source": {
+        "tweetId": "2024250076667728230",
+        "timestamp": "2026-02-18T22:30:01.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 4,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_2d56c476",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -111.1,
+        "y": 22.21
+      }
+    },
+    {
+      "id": "room_7ed447c3",
+      "name": "Dream Room",
+      "number": 4,
+      "topic": "existential",
+      "archetype": {
+        "wallTexture": "dark_void",
+        "lightColor": "#8844ff",
+        "ambience": "deep_drone"
+      },
+      "dimensions": {
+        "width": 4.4,
+        "height": 4.4,
+        "depth": 4.4
+      },
+      "sentiment": 0,
+      "virality": 0.6989700043360189,
+      "entropy": {
+        "score": 0,
+        "halfLife": 8632.584031219336,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "I'm fascinated by the simulation theory; especially as it relates to Christianity",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @NeverB4Seen1: @elonmusk Intriguing",
+          "RT @SexyTechNews: @elonmusk Religion and simulation theory are garbage"
+        ],
+        "words": [
+          "@NeverB4Seen1:",
+          "@elonmusk",
+          "Intriguing.",
+          "fascinated",
+          "simulation",
+          "theory;",
+          "especially",
+          "relates"
+        ],
+        "raw": "RT @NeverB4Seen1: @elonmusk Intriguing. I'm fascinated by the simulation theory; especially as it relates to Christianity."
+      },
+      "source": {
+        "tweetId": "2024249289136812389",
+        "timestamp": "2026-02-18T22:26:53.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 4,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -55.38,
+        "y": 49.22
+      }
+    },
+    {
+      "id": "room_4453146c",
+      "name": "Circuit Maze",
+      "number": 5,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 7.2,
+        "height": 7.2,
+        "depth": 7.2
+      },
+      "sentiment": 0,
+      "virality": 2.1172712956557644,
+      "entropy": {
+        "score": 0,
+        "halfLife": 18844.353328721503,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @EARTHM0VERRR: Serial Experiments Lain✅: 8",
+          "5-9/10\n\nWay ahead of its time",
+          "How it was able to accurately predict internet culture almost…",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@EARTHM0VERRR:",
+          "Serial",
+          "Experiments",
+          "Lain✅:",
+          "8.5-9/10",
+          "ahead",
+          "time.",
+          "accurately"
+        ],
+        "raw": "RT @EARTHM0VERRR: Serial Experiments Lain✅: 8.5-9/10\n\nWay ahead of its time. How it was able to accurately predict internet culture almost…"
+      },
+      "source": {
+        "tweetId": "2024249587813244938",
+        "timestamp": "2026-02-18T22:28:05.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 130,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_d0175a7e",
+        "room_e98bab58",
+        "room_9128c81a",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -30.78,
+        "y": 95.76
+      }
+    },
+    {
+      "id": "room_3056ff2c",
+      "name": "Terminal Room",
+      "number": 6,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 6.3,
+        "height": 6.3,
+        "depth": 6.3
+      },
+      "sentiment": 0,
+      "virality": 1.6720978579357175,
+      "entropy": {
+        "score": 0,
+        "halfLife": 15639.104577137166,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @SolCaesar: a lot of yall are expecting Gavan Infinity to fill a void for Sentai that it’s not going to do, a lot of us spent over 10+ y…",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@SolCaesar:",
+          "expecting",
+          "Gavan",
+          "Infinity",
+          "Sentai",
+          "going",
+          "spent"
+        ],
+        "raw": "RT @SolCaesar: a lot of yall are expecting Gavan Infinity to fill a void for Sentai that it’s not going to do, a lot of us spent over 10+ y…"
+      },
+      "source": {
+        "tweetId": "2024252800830439677",
+        "timestamp": "2026-02-18T22:40:51.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 46,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_5f3c1551",
+        "room_d0175a7e",
+        "room_e98bab58",
+        "room_9128c81a",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -19.5,
+        "y": 41.12
+      }
+    },
+    {
+      "id": "room_5f3c1551",
+      "name": "Data Center",
+      "number": 7,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 4.9,
+        "height": 4.9,
+        "depth": 4.9
+      },
+      "sentiment": 0,
+      "virality": 0.9542425094393249,
+      "entropy": {
+        "score": 0,
+        "halfLife": 10470.546067963138,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @Integrity_Freak: All the AI humor you see is Seinfeld parodies and epic Jeffrey Epstein references because this is a technology that ex…",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@Integrity_Freak:",
+          "humor",
+          "Seinfeld",
+          "parodies",
+          "Jeffrey",
+          "Epstein",
+          "references",
+          "because"
+        ],
+        "raw": "RT @Integrity_Freak: All the AI humor you see is Seinfeld parodies and epic Jeffrey Epstein references because this is a technology that ex…"
+      },
+      "source": {
+        "tweetId": "2024249725671628988",
+        "timestamp": "2026-02-18T22:28:37.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 8,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_d0175a7e",
+        "room_e98bab58",
+        "room_9128c81a",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 19.63,
+        "y": 22.15
+      }
+    },
+    {
+      "id": "room_d0175a7e",
+      "name": "Terminal Room",
+      "number": 8,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 5.9,
+        "height": 3.6,
+        "depth": 4.6
+      },
+      "sentiment": 1,
+      "virality": 0.7781512503836436,
+      "entropy": {
+        "score": 0,
+        "halfLife": 9202.689002762234,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @LuciusCaviola: I’m excited to launch the Digital Minds Fellowship (Aug 3–9, 2026, University of Cambridge)",
+          "Digital minds/AI conscious…",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@LuciusCaviola:",
+          "excited",
+          "launch",
+          "Digital",
+          "Minds",
+          "Fellowship",
+          "2026,",
+          "University"
+        ],
+        "raw": "RT @LuciusCaviola: I’m excited to launch the Digital Minds Fellowship (Aug 3–9, 2026, University of Cambridge).\n\nDigital minds/AI conscious…"
+      },
+      "source": {
+        "tweetId": "2024250064353275965",
+        "timestamp": "2026-02-18T22:29:58.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 5,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_64f13190",
+        "room_3b2d06f8"
+      ],
+      "position": {
+        "x": 14.28,
+        "y": 5
+      }
+    },
+    {
+      "id": "room_e98bab58",
+      "name": "Data Center",
+      "number": 9,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 4.2,
+        "height": 4.2,
+        "depth": 4.2
+      },
+      "sentiment": 0,
+      "virality": 0.6020599913279624,
+      "entropy": {
+        "score": 0,
+        "halfLife": 7934.83193756133,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @danwilliamsphil: The ethics of AI consciousness",
+          "Full conversation here: https://t",
+          "co/vvyXdBifju https://t",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@danwilliamsphil:",
+          "ethics",
+          "consciousness.",
+          "conversation",
+          "here:",
+          "https://t.co/vvyXdBifju",
+          "https://t.co/hQwBgYzW4k"
+        ],
+        "raw": "RT @danwilliamsphil: The ethics of AI consciousness. Full conversation here: https://t.co/vvyXdBifju https://t.co/hQwBgYzW4k"
+      },
+      "source": {
+        "tweetId": "2024250473633448345",
+        "timestamp": "2026-02-18T22:31:36.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 3,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_d0175a7e",
+        "room_9128c81a",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 9.3,
+        "y": 17.11
+      }
+    },
+    {
+      "id": "room_9128c81a",
+      "name": "Terminal Room",
+      "number": 10,
+      "topic": "tech",
+      "archetype": {
+        "wallTexture": "metal_grid",
+        "lightColor": "#00ff88",
+        "ambience": "electric_hum"
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 5,
+        "depth": 4.2
+      },
+      "sentiment": -1,
+      "virality": 0.6020599913279624,
+      "entropy": {
+        "score": 0,
+        "halfLife": 7934.83193756133,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @Outs45: @Lordsidiousv2 @WARRIOROG4 @Gentleman2741 Do you realize what you just said",
+          "Iraq is foreign, do not target people you are con…",
+          "RT @scape_sven: @elonmusk If as Leonard Susskind believes we are stuck in our solar system it certainly would drive my thoughts towards sim…",
+          "@Lorelei_boss @Wuthering_Waves @WW_devteam LET 1",
+          "@JuliaEMcCoy Interesting"
+        ],
+        "words": [
+          "@Outs45:",
+          "@Lordsidiousv2",
+          "@WARRIOROG4",
+          "@Gentleman2741",
+          "realize",
+          "foreign,",
+          "target",
+          "people"
+        ],
+        "raw": "RT @Outs45: @Lordsidiousv2 @WARRIOROG4 @Gentleman2741 Do you realize what you just said ? Iraq is foreign, do not target people you are con…"
+      },
+      "source": {
+        "tweetId": "2024252681196355634",
+        "timestamp": "2026-02-18T22:40:22.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 3,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58"
+      ],
+      "position": {
+        "x": 31.91,
+        "y": -15.59
+      }
+    },
+    {
+      "id": "room_e429d878",
+      "name": "Empty Office",
+      "number": 11,
+      "topic": "liminal",
+      "archetype": {
+        "wallTexture": "yellow_wallpaper",
+        "lightColor": "#ffcc44",
+        "ambience": "fluorescent_buzz"
+      },
+      "dimensions": {
+        "width": 6.7,
+        "height": 6.7,
+        "depth": 6.7
+      },
+      "sentiment": 0,
+      "virality": 1.8388490907372552,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16839.71345330824,
+        "createdAt": 1771454468069
+      },
+      "fragments": {
+        "sentences": [
+          "RT @taku_dzwa1: The internet is ruining everything from culture, everything 😭😭😭 we are just a wicked generation 😭 https://t",
+          "co/7wWovtFhsV",
+          "RT @princess414141: @elonmusk I posted this about an hour ago with a dash of humor, 😆but in all seriousness check out Donald Hoffman's inte…",
+          "RT @PickleVonNoodle: Me at the Zoo was the FIRST ever youtube video ever uploaded to the platform\n\nIt is now being displayed in a museum",
+          "RT @backroomsonline: @HowdylmTom @KaneHypeGuy That would be really cool"
+        ],
+        "words": [
+          "@taku_dzwa1:",
+          "internet",
+          "ruining",
+          "everything",
+          "culture,",
+          "everything",
+          "😭😭😭",
+          "wicked"
+        ],
+        "raw": "RT @taku_dzwa1: The internet is ruining everything from culture, everything 😭😭😭 we are just a wicked generation 😭 https://t.co/7wWovtFhsV"
+      },
+      "source": {
+        "tweetId": "2024252473280479738",
+        "timestamp": "2026-02-18T22:39:33.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 68,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 76.7,
+        "y": 81.2
+      }
+    },
+    {
+      "id": "room_c08bb332",
+      "name": "Empty Office",
+      "number": 12,
+      "topic": "liminal",
+      "archetype": {
+        "wallTexture": "yellow_wallpaper",
+        "lightColor": "#ffcc44",
+        "ambience": "fluorescent_buzz"
+      },
+      "dimensions": {
+        "width": 6.7,
+        "height": 6.7,
+        "depth": 6.7
+      },
+      "sentiment": 0,
+      "virality": 1.8388490907372552,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16839.71345330824,
+        "createdAt": 1771454468070
+      },
+      "fragments": {
+        "sentences": [
+          "RT @taku_dzwa1: The internet is ruining everything from culture, everything 😭😭😭 we are just a wicked generation 😭 https://t",
+          "co/7wWovtFhsV",
+          "RT @princess414141: @elonmusk I posted this about an hour ago with a dash of humor, 😆but in all seriousness check out Donald Hoffman's inte…",
+          "RT @PickleVonNoodle: Me at the Zoo was the FIRST ever youtube video ever uploaded to the platform\n\nIt is now being displayed in a museum",
+          "RT @backroomsonline: @HowdylmTom @KaneHypeGuy That would be really cool"
+        ],
+        "words": [
+          "@taku_dzwa1:",
+          "internet",
+          "ruining",
+          "everything",
+          "culture,",
+          "everything",
+          "😭😭😭",
+          "wicked"
+        ],
+        "raw": "RT @taku_dzwa1: The internet is ruining everything from culture, everything 😭😭😭 we are just a wicked generation 😭 https://t.co/7wWovtFhsV"
+      },
+      "source": {
+        "tweetId": "2024249219641413732",
+        "timestamp": "2026-02-18T22:26:37.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 68,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -10.6,
+        "y": 39.81
+      }
+    },
+    {
+      "id": "room_3d596be4",
+      "name": "Waiting Room",
+      "number": 13,
+      "topic": "liminal",
+      "archetype": {
+        "wallTexture": "yellow_wallpaper",
+        "lightColor": "#ffcc44",
+        "ambience": "fluorescent_buzz"
+      },
+      "dimensions": {
+        "width": 6.6,
+        "height": 6.6,
+        "depth": 6.6
+      },
+      "sentiment": 0,
+      "virality": 1.7781512503836436,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16402.689002762236,
+        "createdAt": 1771454468070
+      },
+      "fragments": {
+        "sentences": [
+          "RT @I_am_wf_Paulano: permawebDAO\n\nMost people treat permanence on the internet like a feature",
+          "PermawebDAO treats it like infrastructure",
+          "RT @princess414141: @elonmusk I posted this about an hour ago with a dash of humor, 😆but in all seriousness check out Donald Hoffman's inte…",
+          "RT @PickleVonNoodle: Me at the Zoo was the FIRST ever youtube video ever uploaded to the platform\n\nIt is now being displayed in a museum",
+          "RT @backroomsonline: @HowdylmTom @KaneHypeGuy That would be really cool"
+        ],
+        "words": [
+          "@I_am_wf_Paulano:",
+          "permawebDAO",
+          "people",
+          "treat",
+          "permanence",
+          "internet",
+          "feature.",
+          "PermawebDAO"
+        ],
+        "raw": "RT @I_am_wf_Paulano: permawebDAO\n\nMost people treat permanence on the internet like a feature.\nPermawebDAO treats it like infrastructure.…"
+      },
+      "source": {
+        "tweetId": "2024251603218206763",
+        "timestamp": "2026-02-18T22:36:05.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 59,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 15.79,
+        "y": -76.63
+      }
+    },
+    {
+      "id": "room_7f1fb19f",
+      "name": "Hallway 7B",
+      "number": 14,
+      "topic": "liminal",
+      "archetype": {
+        "wallTexture": "yellow_wallpaper",
+        "lightColor": "#ffcc44",
+        "ambience": "fluorescent_buzz"
+      },
+      "dimensions": {
+        "width": 6.6,
+        "height": 6.6,
+        "depth": 6.6
+      },
+      "sentiment": 0,
+      "virality": 1.7781512503836436,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16402.689002762236,
+        "createdAt": 1771454468070
+      },
+      "fragments": {
+        "sentences": [
+          "RT @I_am_wf_Paulano: permawebDAO\n\nMost people treat permanence on the internet like a feature",
+          "PermawebDAO treats it like infrastructure",
+          "RT @princess414141: @elonmusk I posted this about an hour ago with a dash of humor, 😆but in all seriousness check out Donald Hoffman's inte…",
+          "RT @PickleVonNoodle: Me at the Zoo was the FIRST ever youtube video ever uploaded to the platform\n\nIt is now being displayed in a museum",
+          "RT @backroomsonline: @HowdylmTom @KaneHypeGuy That would be really cool"
+        ],
+        "words": [
+          "@I_am_wf_Paulano:",
+          "permawebDAO",
+          "people",
+          "treat",
+          "permanence",
+          "internet",
+          "feature.",
+          "PermawebDAO"
+        ],
+        "raw": "RT @I_am_wf_Paulano: permawebDAO\n\nMost people treat permanence on the internet like a feature.\nPermawebDAO treats it like infrastructure.���"
+      },
+      "source": {
+        "tweetId": "2024249400864755773",
+        "timestamp": "2026-02-18T22:27:20.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 59,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -29.73,
+        "y": -114.15
+      }
+    },
+    {
+      "id": "room_64f13190",
+      "name": "Observatory",
+      "number": 15,
+      "topic": "science",
+      "archetype": {
+        "wallTexture": "white_panel",
+        "lightColor": "#4488ff",
+        "ambience": "instrument_beep"
+      },
+      "dimensions": {
+        "width": 9.4,
+        "height": 5.8,
+        "depth": 7.2
+      },
+      "sentiment": 1,
+      "virality": 2.1172712956557644,
+      "entropy": {
+        "score": 0,
+        "halfLife": 18844.353328721503,
+        "createdAt": 1771454468070
+      },
+      "fragments": {
+        "sentences": [
+          "RT @willowneptune: a love letter to liminal spaces; mini poem \n\ni share more weird &amp; sexy stuff on my substack:\nhttps://t",
+          "co/W6VBYbolNS htt…",
+          "RT @Peku_ooEeO: When's the next stop",
+          "liminal spaces kind of https://t",
+          "some more liminal spaces, this time with some of necro's more dangerous friends :) oh and an old man, hes only really a psychological threat 💀🪻🙂👻📘 https://t"
+        ],
+        "words": [
+          "@willowneptune:",
+          "letter",
+          "liminal",
+          "spaces;",
+          "share",
+          "weird",
+          "&amp;",
+          "stuff"
+        ],
+        "raw": "RT @willowneptune: a love letter to liminal spaces; mini poem \n\ni share more weird &amp; sexy stuff on my substack:\nhttps://t.co/W6VBYbolNS htt…"
+      },
+      "source": {
+        "tweetId": "2024251560726057035",
+        "timestamp": "2026-02-18T22:35:55.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 130,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_d0175a7e",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_3b2d06f8"
+      ],
+      "position": {
+        "x": -14.14,
+        "y": 13.85
+      }
+    },
+    {
+      "id": "room_4842a958",
+      "name": "Telescope Bay",
+      "number": 16,
+      "topic": "science",
+      "archetype": {
+        "wallTexture": "white_panel",
+        "lightColor": "#4488ff",
+        "ambience": "instrument_beep"
+      },
+      "dimensions": {
+        "width": 6.7,
+        "height": 6.7,
+        "depth": 6.7
+      },
+      "sentiment": 0,
+      "virality": 1.8260748027008264,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16747.73857944595,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "RT @TConfessionals: Christians who don't believe in a Supernatural World\n724: The Liminal Spaces\n#Supernatural https://t",
+          "co/AwFiPFkYWQ",
+          "RT @Peku_ooEeO: When's the next stop",
+          "liminal spaces kind of https://t",
+          "some more liminal spaces, this time with some of necro's more dangerous friends :) oh and an old man, hes only really a psychological threat 💀🪻🙂👻📘 https://t"
+        ],
+        "words": [
+          "@TConfessionals:",
+          "Christians",
+          "don't",
+          "believe",
+          "Supernatural",
+          "World",
+          "Liminal",
+          "Spaces"
+        ],
+        "raw": "RT @TConfessionals: Christians who don't believe in a Supernatural World\n724: The Liminal Spaces\n#Supernatural https://t.co/AwFiPFkYWQ"
+      },
+      "source": {
+        "tweetId": "2024232500479000747",
+        "timestamp": "2026-02-18T21:20:11.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 66,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_64f13190",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 71.44,
+        "y": -8.92
+      }
+    },
+    {
+      "id": "room_02c954a9",
+      "name": "Lab",
+      "number": 17,
+      "topic": "science",
+      "archetype": {
+        "wallTexture": "white_panel",
+        "lightColor": "#4488ff",
+        "ambience": "instrument_beep"
+      },
+      "dimensions": {
+        "width": 6.6,
+        "height": 6.6,
+        "depth": 6.6
+      },
+      "sentiment": 0,
+      "virality": 1.7781512503836436,
+      "entropy": {
+        "score": 0,
+        "halfLife": 16402.689002762236,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "RT @Peku_ooEeO: When's the next stop",
+          "(ENA in liminal spaces 1",
+          ")\n #EnaJoelg #ENA https://t",
+          "RT @Peku_ooEeO: When's the next stop",
+          "liminal spaces kind of https://t",
+          "some more liminal spaces, this time with some of necro's more dangerous friends :) oh and an old man, hes only really a psychological threat 💀🪻🙂👻📘 https://t"
+        ],
+        "words": [
+          "@Peku_ooEeO:",
+          "When's",
+          "stop?",
+          "liminal",
+          "spaces",
+          "#EnaJoelg",
+          "https://t.co/C7agPG2oJl"
+        ],
+        "raw": "RT @Peku_ooEeO: When's the next stop? \n(ENA in liminal spaces 1?)\n #EnaJoelg #ENA https://t.co/C7agPG2oJl"
+      },
+      "source": {
+        "tweetId": "2024241344466866185",
+        "timestamp": "2026-02-18T21:55:19.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 59,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_64f13190",
+        "room_4842a958",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": 0.04,
+        "y": 44.36
+      }
+    },
+    {
+      "id": "room_c2278da7",
+      "name": "Gallery",
+      "number": 18,
+      "topic": "culture",
+      "archetype": {
+        "wallTexture": "neon_tile",
+        "lightColor": "#ff66ff",
+        "ambience": "static_music"
+      },
+      "dimensions": {
+        "width": 7.3,
+        "height": 7.3,
+        "depth": 7.3
+      },
+      "sentiment": 0,
+      "virality": 2.161368002234975,
+      "entropy": {
+        "score": 0,
+        "halfLife": 19161.84961609182,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "RT @DoggieDiamonds: You can’t be in another country telling me about Black American, music, hip hop, rap, politics, people, culture, not a…",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "@kumakurea_ Yup"
+        ],
+        "words": [
+          "@DoggieDiamonds:",
+          "can’t",
+          "another",
+          "country",
+          "telling",
+          "about",
+          "Black",
+          "American,"
+        ],
+        "raw": "RT @DoggieDiamonds: You can’t be in another country telling me about Black American, music, hip hop, rap, politics, people, culture, not a…"
+      },
+      "source": {
+        "tweetId": "2024252549784592620",
+        "timestamp": "2026-02-18T22:39:51.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 144,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_0c9563ff",
+        "room_7b730383",
+        "room_3b2d06f8",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -6.43,
+        "y": -10
+      }
+    },
+    {
+      "id": "room_0c9563ff",
+      "name": "Screening Room",
+      "number": 19,
+      "topic": "culture",
+      "archetype": {
+        "wallTexture": "neon_tile",
+        "lightColor": "#ff66ff",
+        "ambience": "static_music"
+      },
+      "dimensions": {
+        "width": 5.8,
+        "height": 5.8,
+        "depth": 5.8
+      },
+      "sentiment": 0,
+      "virality": 1.414973347970818,
+      "entropy": {
+        "score": 0,
+        "halfLife": 13787.80810538989,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "RT @LittleyVietnam: #backrooms #partypoopers #partygoers #jerrybackrooms https://t",
+          "co/Yp2CaNUHI1",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "@kumakurea_ Yup"
+        ],
+        "words": [
+          "@LittleyVietnam:",
+          "#backrooms",
+          "#partypoopers",
+          "#partygoers",
+          "#jerrybackrooms",
+          "https://t.co/Yp2CaNUHI1"
+        ],
+        "raw": "RT @LittleyVietnam: #backrooms #partypoopers #partygoers #jerrybackrooms https://t.co/Yp2CaNUHI1"
+      },
+      "source": {
+        "tweetId": "2024252447125098589",
+        "timestamp": "2026-02-18T22:39:26.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 25,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_7b730383",
+        "room_3b2d06f8",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -11.93,
+        "y": 22.53
+      }
+    },
+    {
+      "id": "room_7b730383",
+      "name": "Arcade",
+      "number": 20,
+      "topic": "culture",
+      "archetype": {
+        "wallTexture": "neon_tile",
+        "lightColor": "#ff66ff",
+        "ambience": "static_music"
+      },
+      "dimensions": {
+        "width": 5.8,
+        "height": 5.8,
+        "depth": 5.8
+      },
+      "sentiment": 0,
+      "virality": 1.3979400086720377,
+      "entropy": {
+        "score": 0,
+        "halfLife": 13665.168062438672,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "The official Instagram account for the Backrooms movie is LIVE",
+          "Likely legitimate as it has been followed by several actors of the film for months before going public",
+          "FOLLOW IT FOR OFFICIAL MOVIE ANNOUNCEMENTS NOW:\nhttps://t",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "@kumakurea_ Yup"
+        ],
+        "words": [
+          "official",
+          "Instagram",
+          "account",
+          "Backrooms",
+          "movie",
+          "LIVE.",
+          "Likely",
+          "legitimate"
+        ],
+        "raw": "The official Instagram account for the Backrooms movie is LIVE.\n\nLikely legitimate as it has been followed by several actors of the film for months before going public.\n\nFOLLOW IT FOR OFFICIAL MOVIE ANNOUNCEMENTS NOW:\nhttps://t.co/u8wzxkkZdC https://t.co/oVDVmzwPdi"
+      },
+      "source": {
+        "tweetId": "2024248993807814935",
+        "timestamp": "2026-02-18T22:25:43.000Z",
+        "metrics": {
+          "likes": 22,
+          "retweets": 2,
+          "replies": 3
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_3b2d06f8",
+        "room_bfe90961"
+      ],
+      "position": {
+        "x": -27.03,
+        "y": 10.64
+      }
+    },
+    {
+      "id": "room_3b2d06f8",
+      "name": "Gallery",
+      "number": 21,
+      "topic": "culture",
+      "archetype": {
+        "wallTexture": "neon_tile",
+        "lightColor": "#ff66ff",
+        "ambience": "static_music"
+      },
+      "dimensions": {
+        "width": 5.7,
+        "height": 3.5,
+        "depth": 4.4
+      },
+      "sentiment": 1,
+      "virality": 0.6989700043360189,
+      "entropy": {
+        "score": 0,
+        "halfLife": 8632.584031219336,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "RT @AvidehM: Today marked 40 days since the Iranian people began to mourn the heartbreaking loss of over 40,000 lives—each one a beloved fa…",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "RT @KaneHypeGuy: The official Instagram account for the Backrooms movie is LIVE",
+          "@kumakurea_ Yup"
+        ],
+        "words": [
+          "@AvidehM:",
+          "Today",
+          "marked",
+          "since",
+          "Iranian",
+          "people",
+          "began",
+          "mourn"
+        ],
+        "raw": "RT @AvidehM: Today marked 40 days since the Iranian people began to mourn the heartbreaking loss of over 40,000 lives—each one a beloved fa…"
+      },
+      "source": {
+        "tweetId": "2024252746333909113",
+        "timestamp": "2026-02-18T22:40:38.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 4,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_288d3939",
+        "room_d0175a7e",
+        "room_64f13190",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383"
+      ],
+      "position": {
+        "x": -54.31,
+        "y": -10.67
+      }
+    },
+    {
+      "id": "room_bfe90961",
+      "name": "Propaganda Room",
+      "number": 22,
+      "topic": "politics",
+      "archetype": {
+        "wallTexture": "marble_cracked",
+        "lightColor": "#ff4444",
+        "ambience": "crowd_murmur"
+      },
+      "dimensions": {
+        "width": 3,
+        "height": 3,
+        "depth": 3
+      },
+      "sentiment": 0,
+      "virality": 0,
+      "entropy": {
+        "score": 0,
+        "halfLife": 3600,
+        "createdAt": 1771454468071
+      },
+      "fragments": {
+        "sentences": [
+          "@TheFunkyLawyer The executive order mandates direct remittance of oil/gas revenues (royalties, taxes, profit oil) to the Federation Account, eliminating NNPC's 30% management fee and other deductions",
+          "For existing forward sale arrangements, it doesn't explicitly void them but requires"
+        ],
+        "words": [
+          "@TheFunkyLawyer",
+          "executive",
+          "order",
+          "mandates",
+          "direct",
+          "remittance",
+          "oil/gas",
+          "revenues"
+        ],
+        "raw": "@TheFunkyLawyer The executive order mandates direct remittance of oil/gas revenues (royalties, taxes, profit oil) to the Federation Account, eliminating NNPC's 30% management fee and other deductions. For existing forward sale arrangements, it doesn't explicitly void them but requires"
+      },
+      "source": {
+        "tweetId": "2024252726415102024",
+        "timestamp": "2026-02-18T22:40:33.000Z",
+        "metrics": {
+          "likes": 0,
+          "retweets": 0,
+          "replies": 0
+        }
+      },
+      "connections": [
+        "room_2d56c476",
+        "room_a90cde86",
+        "room_7ed447c3",
+        "room_4453146c",
+        "room_3056ff2c",
+        "room_5f3c1551",
+        "room_e98bab58",
+        "room_e429d878",
+        "room_c08bb332",
+        "room_3d596be4",
+        "room_7f1fb19f",
+        "room_4842a958",
+        "room_02c954a9",
+        "room_c2278da7",
+        "room_0c9563ff",
+        "room_7b730383"
+      ],
+      "position": {
+        "x": 123.89,
+        "y": -12.37
+      }
+    }
+  ],
+  "corridors": [
+    {
+      "id": "corridor_room_288d3939_room_2d56c476",
+      "from": "room_288d3939",
+      "to": "room_2d56c476",
+      "similarity": 0.6852809285882162,
+      "width": 3.0558427857646486,
+      "length": 3.147190714117838,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_288d3939_room_a90cde86",
+      "from": "room_288d3939",
+      "to": "room_a90cde86",
+      "similarity": 0.670072478919752,
+      "width": 3.010217436759256,
+      "length": 3.29927521080248,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_288d3939_room_7ed447c3",
+      "from": "room_288d3939",
+      "to": "room_7ed447c3",
+      "similarity": 0.670072478919752,
+      "width": 3.010217436759256,
+      "length": 3.29927521080248,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_288d3939_room_d0175a7e",
+      "from": "room_288d3939",
+      "to": "room_d0175a7e",
+      "similarity": 0.473239728761657,
+      "width": 2.419719186284971,
+      "length": 5.267602712383431,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_288d3939_room_64f13190",
+      "from": "room_288d3939",
+      "to": "room_64f13190",
+      "similarity": 0.47319546942745816,
+      "width": 2.4195864082823744,
+      "length": 5.268045305725418,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_288d3939_room_3b2d06f8",
+      "from": "room_288d3939",
+      "to": "room_3b2d06f8",
+      "similarity": 0.470072478919752,
+      "width": 2.410217436759256,
+      "length": 5.29927521080248,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_a90cde86",
+      "from": "room_2d56c476",
+      "to": "room_a90cde86",
+      "similarity": 0.9847915503315359,
+      "width": 3.9543746509946076,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_7ed447c3",
+      "from": "room_2d56c476",
+      "to": "room_7ed447c3",
+      "similarity": 0.9847915503315359,
+      "width": 3.9543746509946076,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_4453146c",
+      "from": "room_2d56c476",
+      "to": "room_4453146c",
+      "similarity": 0.4584763980156744,
+      "width": 2.3754291940470234,
+      "length": 5.415236019843256,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_3056ff2c",
+      "from": "room_2d56c476",
+      "to": "room_3056ff2c",
+      "similarity": 0.4762833355244763,
+      "width": 2.428850006573429,
+      "length": 5.237166644755237,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_5f3c1551",
+      "from": "room_2d56c476",
+      "to": "room_5f3c1551",
+      "similarity": 0.495002450535668,
+      "width": 2.485007351607004,
+      "length": 5.04997549464332,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_e98bab58",
+      "from": "room_2d56c476",
+      "to": "room_e98bab58",
+      "similarity": 0.4809151498112135,
+      "width": 2.4427454494336405,
+      "length": 5.1908485018878645,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_e429d878",
+      "from": "room_2d56c476",
+      "to": "room_e429d878",
+      "similarity": 0.46961328621241477,
+      "width": 2.4088398586372444,
+      "length": 5.303867137875853,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_c08bb332",
+      "from": "room_2d56c476",
+      "to": "room_c08bb332",
+      "similarity": 0.46961328621241477,
+      "width": 2.4088398586372444,
+      "length": 5.303867137875853,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_3d596be4",
+      "from": "room_2d56c476",
+      "to": "room_3d596be4",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_7f1fb19f",
+      "from": "room_2d56c476",
+      "to": "room_7f1fb19f",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_4842a958",
+      "from": "room_2d56c476",
+      "to": "room_4842a958",
+      "similarity": 0.47012425773387195,
+      "width": 2.410372773201616,
+      "length": 5.29875742266128,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_02c954a9",
+      "from": "room_2d56c476",
+      "to": "room_02c954a9",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_c2278da7",
+      "from": "room_2d56c476",
+      "to": "room_c2278da7",
+      "similarity": 0.456712529752506,
+      "width": 2.370137589257518,
+      "length": 5.43287470247494,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_0c9563ff",
+      "from": "room_2d56c476",
+      "to": "room_0c9563ff",
+      "similarity": 0.48656831592307226,
+      "width": 2.4597049477692168,
+      "length": 5.134316840769277,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_7b730383",
+      "from": "room_2d56c476",
+      "to": "room_7b730383",
+      "similarity": 0.4872496494950235,
+      "width": 2.4617489484850705,
+      "length": 5.1275035050497655,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_2d56c476_room_bfe90961",
+      "from": "room_2d56c476",
+      "to": "room_bfe90961",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_7ed447c3",
+      "from": "room_a90cde86",
+      "to": "room_7ed447c3",
+      "similarity": 1,
+      "width": 4,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_4453146c",
+      "from": "room_a90cde86",
+      "to": "room_4453146c",
+      "similarity": 0.44326794834721017,
+      "width": 2.3298038450416305,
+      "length": 5.567320516527898,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_3056ff2c",
+      "from": "room_a90cde86",
+      "to": "room_3056ff2c",
+      "similarity": 0.46107488585601203,
+      "width": 2.383224657568036,
+      "length": 5.389251141439879,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_5f3c1551",
+      "from": "room_a90cde86",
+      "to": "room_5f3c1551",
+      "similarity": 0.48978909979586777,
+      "width": 2.4693672993876032,
+      "length": 5.102109002041322,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_e98bab58",
+      "from": "room_a90cde86",
+      "to": "room_e98bab58",
+      "similarity": 0.49612359947967777,
+      "width": 2.4883707984390333,
+      "length": 5.038764005203222,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_e429d878",
+      "from": "room_a90cde86",
+      "to": "room_e429d878",
+      "similarity": 0.45440483654395053,
+      "width": 2.3632145096318515,
+      "length": 5.455951634560494,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_c08bb332",
+      "from": "room_a90cde86",
+      "to": "room_c08bb332",
+      "similarity": 0.45440483654395053,
+      "width": 2.3632145096318515,
+      "length": 5.455951634560494,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_3d596be4",
+      "from": "room_a90cde86",
+      "to": "room_3d596be4",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_7f1fb19f",
+      "from": "room_a90cde86",
+      "to": "room_7f1fb19f",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_4842a958",
+      "from": "room_a90cde86",
+      "to": "room_4842a958",
+      "similarity": 0.4549158080654077,
+      "width": 2.3647474241962234,
+      "length": 5.450841919345923,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_02c954a9",
+      "from": "room_a90cde86",
+      "to": "room_02c954a9",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_c2278da7",
+      "from": "room_a90cde86",
+      "to": "room_c2278da7",
+      "similarity": 0.44150408008404174,
+      "width": 2.324512240252125,
+      "length": 5.584959199159583,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_0c9563ff",
+      "from": "room_a90cde86",
+      "to": "room_0c9563ff",
+      "similarity": 0.471359866254608,
+      "width": 2.414079598763824,
+      "length": 5.28640133745392,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_7b730383",
+      "from": "room_a90cde86",
+      "to": "room_7b730383",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_a90cde86_room_bfe90961",
+      "from": "room_a90cde86",
+      "to": "room_bfe90961",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_4453146c",
+      "from": "room_7ed447c3",
+      "to": "room_4453146c",
+      "similarity": 0.44326794834721017,
+      "width": 2.3298038450416305,
+      "length": 5.567320516527898,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_3056ff2c",
+      "from": "room_7ed447c3",
+      "to": "room_3056ff2c",
+      "similarity": 0.46107488585601203,
+      "width": 2.383224657568036,
+      "length": 5.389251141439879,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_5f3c1551",
+      "from": "room_7ed447c3",
+      "to": "room_5f3c1551",
+      "similarity": 0.48978909979586777,
+      "width": 2.4693672993876032,
+      "length": 5.102109002041322,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_e98bab58",
+      "from": "room_7ed447c3",
+      "to": "room_e98bab58",
+      "similarity": 0.49612359947967777,
+      "width": 2.4883707984390333,
+      "length": 5.038764005203222,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_e429d878",
+      "from": "room_7ed447c3",
+      "to": "room_e429d878",
+      "similarity": 0.45440483654395053,
+      "width": 2.3632145096318515,
+      "length": 5.455951634560494,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_c08bb332",
+      "from": "room_7ed447c3",
+      "to": "room_c08bb332",
+      "similarity": 0.45440483654395053,
+      "width": 2.3632145096318515,
+      "length": 5.455951634560494,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_3d596be4",
+      "from": "room_7ed447c3",
+      "to": "room_3d596be4",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_7f1fb19f",
+      "from": "room_7ed447c3",
+      "to": "room_7f1fb19f",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_4842a958",
+      "from": "room_7ed447c3",
+      "to": "room_4842a958",
+      "similarity": 0.4549158080654077,
+      "width": 2.3647474241962234,
+      "length": 5.450841919345923,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_02c954a9",
+      "from": "room_7ed447c3",
+      "to": "room_02c954a9",
+      "similarity": 0.456832750158095,
+      "width": 2.370498250474285,
+      "length": 5.43167249841905,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_c2278da7",
+      "from": "room_7ed447c3",
+      "to": "room_c2278da7",
+      "similarity": 0.44150408008404174,
+      "width": 2.324512240252125,
+      "length": 5.584959199159583,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_0c9563ff",
+      "from": "room_7ed447c3",
+      "to": "room_0c9563ff",
+      "similarity": 0.471359866254608,
+      "width": 2.414079598763824,
+      "length": 5.28640133745392,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_7b730383",
+      "from": "room_7ed447c3",
+      "to": "room_7b730383",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7ed447c3_room_bfe90961",
+      "from": "room_7ed447c3",
+      "to": "room_bfe90961",
+      "similarity": 0.47204119982655923,
+      "width": 2.4161235994796777,
+      "length": 5.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_3056ff2c",
+      "from": "room_4453146c",
+      "to": "room_3056ff2c",
+      "similarity": 0.9821930624911982,
+      "width": 3.9465791874735947,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_5f3c1551",
+      "from": "room_4453146c",
+      "to": "room_5f3c1551",
+      "similarity": 0.9534788485513425,
+      "width": 3.8604365456540273,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_d0175a7e",
+      "from": "room_4453146c",
+      "to": "room_d0175a7e",
+      "similarity": 0.6464351981891152,
+      "width": 2.9393055945673456,
+      "length": 3.535648018108848,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_e98bab58",
+      "from": "room_4453146c",
+      "to": "room_e98bab58",
+      "similarity": 0.9393915478268879,
+      "width": 3.818174643480664,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_9128c81a",
+      "from": "room_4453146c",
+      "to": "room_9128c81a",
+      "similarity": 0.6393915478268879,
+      "width": 2.918174643480664,
+      "length": 3.606084521731121,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_e429d878",
+      "from": "room_4453146c",
+      "to": "room_e429d878",
+      "similarity": 0.48886311180325964,
+      "width": 2.466589335409779,
+      "length": 5.111368881967405,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_c08bb332",
+      "from": "room_4453146c",
+      "to": "room_c08bb332",
+      "similarity": 0.48886311180325964,
+      "width": 2.466589335409779,
+      "length": 5.111368881967405,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_3d596be4",
+      "from": "room_4453146c",
+      "to": "room_3d596be4",
+      "similarity": 0.4864351981891152,
+      "width": 2.4593055945673457,
+      "length": 5.135648018108848,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_7f1fb19f",
+      "from": "room_4453146c",
+      "to": "room_7f1fb19f",
+      "similarity": 0.4864351981891152,
+      "width": 2.4593055945673457,
+      "length": 5.135648018108848,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_4842a958",
+      "from": "room_4453146c",
+      "to": "room_4842a958",
+      "similarity": 0.48835214028180246,
+      "width": 2.465056420845407,
+      "length": 5.116478597181975,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_02c954a9",
+      "from": "room_4453146c",
+      "to": "room_02c954a9",
+      "similarity": 0.4864351981891152,
+      "width": 2.4593055945673457,
+      "length": 5.135648018108848,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_c2278da7",
+      "from": "room_4453146c",
+      "to": "room_c2278da7",
+      "similarity": 0.49823613173683157,
+      "width": 2.4947083952104947,
+      "length": 5.017638682631684,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_0c9563ff",
+      "from": "room_4453146c",
+      "to": "room_0c9563ff",
+      "similarity": 0.47190808209260215,
+      "width": 2.4157242462778066,
+      "length": 5.280919179073979,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_7b730383",
+      "from": "room_4453146c",
+      "to": "room_7b730383",
+      "similarity": 0.47122674852065094,
+      "width": 2.413680245561953,
+      "length": 5.287732514793491,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4453146c_room_bfe90961",
+      "from": "room_4453146c",
+      "to": "room_bfe90961",
+      "similarity": 0.4153091481737694,
+      "width": 2.245927444521308,
+      "length": 5.846908518262306,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_5f3c1551",
+      "from": "room_3056ff2c",
+      "to": "room_5f3c1551",
+      "similarity": 0.9712857860601444,
+      "width": 3.913857358180433,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_d0175a7e",
+      "from": "room_3056ff2c",
+      "to": "room_d0175a7e",
+      "similarity": 0.664242135697917,
+      "width": 2.992726407093751,
+      "length": 3.3575786430208296,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_e98bab58",
+      "from": "room_3056ff2c",
+      "to": "room_e98bab58",
+      "similarity": 0.9571984853356899,
+      "width": 3.8715954560070696,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_9128c81a",
+      "from": "room_3056ff2c",
+      "to": "room_9128c81a",
+      "similarity": 0.6571984853356898,
+      "width": 2.971595456007069,
+      "length": 3.428015146643102,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_e429d878",
+      "from": "room_3056ff2c",
+      "to": "room_e429d878",
+      "similarity": 0.4933299506879385,
+      "width": 2.4799898520638157,
+      "length": 5.066700493120615,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_c08bb332",
+      "from": "room_3056ff2c",
+      "to": "room_c08bb332",
+      "similarity": 0.4933299506879385,
+      "width": 2.4799898520638157,
+      "length": 5.066700493120615,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_3d596be4",
+      "from": "room_3056ff2c",
+      "to": "room_3d596be4",
+      "similarity": 0.49575786430208296,
+      "width": 2.4872735929062486,
+      "length": 5.04242135697917,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_7f1fb19f",
+      "from": "room_3056ff2c",
+      "to": "room_7f1fb19f",
+      "similarity": 0.49575786430208296,
+      "width": 2.4872735929062486,
+      "length": 5.04242135697917,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_4842a958",
+      "from": "room_3056ff2c",
+      "to": "room_4842a958",
+      "similarity": 0.4938409222093956,
+      "width": 2.4815227666281867,
+      "length": 5.061590777906044,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_02c954a9",
+      "from": "room_3056ff2c",
+      "to": "room_02c954a9",
+      "similarity": 0.49575786430208296,
+      "width": 2.4872735929062486,
+      "length": 5.04242135697917,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_c2278da7",
+      "from": "room_3056ff2c",
+      "to": "room_c2278da7",
+      "similarity": 0.4804291942280297,
+      "width": 2.4412875826840894,
+      "length": 5.1957080577197035,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_0c9563ff",
+      "from": "room_3056ff2c",
+      "to": "room_0c9563ff",
+      "similarity": 0.489715019601404,
+      "width": 2.4691450588042123,
+      "length": 5.10284980398596,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_7b730383",
+      "from": "room_3056ff2c",
+      "to": "room_7b730383",
+      "similarity": 0.4890336860294528,
+      "width": 2.4671010580883586,
+      "length": 5.1096631397054715,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3056ff2c_room_bfe90961",
+      "from": "room_3056ff2c",
+      "to": "room_bfe90961",
+      "similarity": 0.4331160856825713,
+      "width": 2.299348257047714,
+      "length": 5.668839143174287,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_d0175a7e",
+      "from": "room_5f3c1551",
+      "to": "room_d0175a7e",
+      "similarity": 0.6929563496377728,
+      "width": 3.0788690489133184,
+      "length": 3.0704365036222727,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_e98bab58",
+      "from": "room_5f3c1551",
+      "to": "room_e98bab58",
+      "similarity": 0.9859126992755456,
+      "width": 3.9577380978266365,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_9128c81a",
+      "from": "room_5f3c1551",
+      "to": "room_9128c81a",
+      "similarity": 0.6859126992755455,
+      "width": 3.0577380978266366,
+      "length": 3.1408730072445445,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_e429d878",
+      "from": "room_5f3c1551",
+      "to": "room_e429d878",
+      "similarity": 0.46461573674808276,
+      "width": 2.3938472102442483,
+      "length": 5.353842632519172,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_c08bb332",
+      "from": "room_5f3c1551",
+      "to": "room_c08bb332",
+      "similarity": 0.46461573674808276,
+      "width": 2.3938472102442483,
+      "length": 5.353842632519172,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_3d596be4",
+      "from": "room_5f3c1551",
+      "to": "room_3d596be4",
+      "similarity": 0.4670436503622272,
+      "width": 2.4011309510866816,
+      "length": 5.329563496377727,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_7f1fb19f",
+      "from": "room_5f3c1551",
+      "to": "room_7f1fb19f",
+      "similarity": 0.4670436503622272,
+      "width": 2.4011309510866816,
+      "length": 5.329563496377727,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_4842a958",
+      "from": "room_5f3c1551",
+      "to": "room_4842a958",
+      "similarity": 0.46512670826953995,
+      "width": 2.3953801248086197,
+      "length": 5.3487329173046,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_02c954a9",
+      "from": "room_5f3c1551",
+      "to": "room_02c954a9",
+      "similarity": 0.4670436503622272,
+      "width": 2.4011309510866816,
+      "length": 5.329563496377727,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_c2278da7",
+      "from": "room_5f3c1551",
+      "to": "room_c2278da7",
+      "similarity": 0.45171498028817403,
+      "width": 2.355144940864522,
+      "length": 5.4828501971182595,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_0c9563ff",
+      "from": "room_5f3c1551",
+      "to": "room_0c9563ff",
+      "similarity": 0.4815707664587403,
+      "width": 2.4447122993762207,
+      "length": 5.1842923354125965,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_7b730383",
+      "from": "room_5f3c1551",
+      "to": "room_7b730383",
+      "similarity": 0.48225210003069147,
+      "width": 2.4467563000920745,
+      "length": 5.177478999693086,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_5f3c1551_room_bfe90961",
+      "from": "room_5f3c1551",
+      "to": "room_bfe90961",
+      "similarity": 0.461830299622427,
+      "width": 2.385490898867281,
+      "length": 5.381697003775729,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_d0175a7e_room_e98bab58",
+      "from": "room_d0175a7e",
+      "to": "room_e98bab58",
+      "similarity": 0.6929563496377728,
+      "width": 3.0788690489133184,
+      "length": 3.0704365036222727,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_d0175a7e_room_64f13190",
+      "from": "room_d0175a7e",
+      "to": "room_64f13190",
+      "similarity": 0.44643519818911515,
+      "width": 2.3393055945673455,
+      "length": 5.535648018108849,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_d0175a7e_room_3b2d06f8",
+      "from": "room_d0175a7e",
+      "to": "room_3b2d06f8",
+      "similarity": 0.496832750158095,
+      "width": 2.490498250474285,
+      "length": 5.0316724984190495,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_9128c81a",
+      "from": "room_e98bab58",
+      "to": "room_9128c81a",
+      "similarity": 0.7,
+      "width": 3.0999999999999996,
+      "length": 3.0000000000000004,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_e429d878",
+      "from": "room_e98bab58",
+      "to": "room_e429d878",
+      "similarity": 0.4505284360236283,
+      "width": 2.351585308070885,
+      "length": 5.494715639763717,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_c08bb332",
+      "from": "room_e98bab58",
+      "to": "room_c08bb332",
+      "similarity": 0.4505284360236283,
+      "width": 2.351585308070885,
+      "length": 5.494715639763717,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_3d596be4",
+      "from": "room_e98bab58",
+      "to": "room_3d596be4",
+      "similarity": 0.45295634963777276,
+      "width": 2.358869048913318,
+      "length": 5.470436503622272,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_7f1fb19f",
+      "from": "room_e98bab58",
+      "to": "room_7f1fb19f",
+      "similarity": 0.45295634963777276,
+      "width": 2.358869048913318,
+      "length": 5.470436503622272,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_4842a958",
+      "from": "room_e98bab58",
+      "to": "room_4842a958",
+      "similarity": 0.4510394075450854,
+      "width": 2.3531182226352563,
+      "length": 5.489605924549146,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_02c954a9",
+      "from": "room_e98bab58",
+      "to": "room_02c954a9",
+      "similarity": 0.45295634963777276,
+      "width": 2.358869048913318,
+      "length": 5.470436503622272,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_c2278da7",
+      "from": "room_e98bab58",
+      "to": "room_c2278da7",
+      "similarity": 0.4376276795637195,
+      "width": 2.3128830386911585,
+      "length": 5.623723204362805,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_0c9563ff",
+      "from": "room_e98bab58",
+      "to": "room_0c9563ff",
+      "similarity": 0.4674834657342858,
+      "width": 2.4024503972028572,
+      "length": 5.325165342657142,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_7b730383",
+      "from": "room_e98bab58",
+      "to": "room_7b730383",
+      "similarity": 0.468164799306237,
+      "width": 2.404494397918711,
+      "length": 5.31835200693763,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e98bab58_room_bfe90961",
+      "from": "room_e98bab58",
+      "to": "room_bfe90961",
+      "similarity": 0.4759176003468815,
+      "width": 2.4277528010406444,
+      "length": 5.240823996531185,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_c08bb332",
+      "from": "room_e429d878",
+      "to": "room_c08bb332",
+      "similarity": 1,
+      "width": 4,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_3d596be4",
+      "from": "room_e429d878",
+      "to": "room_3d596be4",
+      "similarity": 0.9975720863858556,
+      "width": 3.9927162591575667,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_7f1fb19f",
+      "from": "room_e429d878",
+      "to": "room_7f1fb19f",
+      "similarity": 0.9975720863858556,
+      "width": 3.9927162591575667,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_4842a958",
+      "from": "room_e429d878",
+      "to": "room_4842a958",
+      "similarity": 0.4994890284785428,
+      "width": 2.4984670854356286,
+      "length": 5.005109715214572,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_02c954a9",
+      "from": "room_e429d878",
+      "to": "room_02c954a9",
+      "similarity": 0.49757208638585554,
+      "width": 2.4927162591575667,
+      "length": 5.024279136141445,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_c2278da7",
+      "from": "room_e429d878",
+      "to": "room_c2278da7",
+      "similarity": 0.4870992435400912,
+      "width": 2.4612977306202737,
+      "length": 5.129007564599089,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_0c9563ff",
+      "from": "room_e429d878",
+      "to": "room_0c9563ff",
+      "similarity": 0.4830449702893425,
+      "width": 2.4491349108680276,
+      "length": 5.169550297106575,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_7b730383",
+      "from": "room_e429d878",
+      "to": "room_7b730383",
+      "similarity": 0.4823636367173913,
+      "width": 2.447090910152174,
+      "length": 5.176363632826087,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_e429d878_room_bfe90961",
+      "from": "room_e429d878",
+      "to": "room_bfe90961",
+      "similarity": 0.4264460363705098,
+      "width": 2.2793381091115297,
+      "length": 5.735539636294902,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_3d596be4",
+      "from": "room_c08bb332",
+      "to": "room_3d596be4",
+      "similarity": 0.9975720863858556,
+      "width": 3.9927162591575667,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_7f1fb19f",
+      "from": "room_c08bb332",
+      "to": "room_7f1fb19f",
+      "similarity": 0.9975720863858556,
+      "width": 3.9927162591575667,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_4842a958",
+      "from": "room_c08bb332",
+      "to": "room_4842a958",
+      "similarity": 0.4994890284785428,
+      "width": 2.4984670854356286,
+      "length": 5.005109715214572,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_02c954a9",
+      "from": "room_c08bb332",
+      "to": "room_02c954a9",
+      "similarity": 0.49757208638585554,
+      "width": 2.4927162591575667,
+      "length": 5.024279136141445,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_c2278da7",
+      "from": "room_c08bb332",
+      "to": "room_c2278da7",
+      "similarity": 0.4870992435400912,
+      "width": 2.4612977306202737,
+      "length": 5.129007564599089,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_0c9563ff",
+      "from": "room_c08bb332",
+      "to": "room_0c9563ff",
+      "similarity": 0.4830449702893425,
+      "width": 2.4491349108680276,
+      "length": 5.169550297106575,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_7b730383",
+      "from": "room_c08bb332",
+      "to": "room_7b730383",
+      "similarity": 0.4823636367173913,
+      "width": 2.447090910152174,
+      "length": 5.176363632826087,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c08bb332_room_bfe90961",
+      "from": "room_c08bb332",
+      "to": "room_bfe90961",
+      "similarity": 0.4264460363705098,
+      "width": 2.2793381091115297,
+      "length": 5.735539636294902,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_7f1fb19f",
+      "from": "room_3d596be4",
+      "to": "room_7f1fb19f",
+      "similarity": 1,
+      "width": 4,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_4842a958",
+      "from": "room_3d596be4",
+      "to": "room_4842a958",
+      "similarity": 0.49808305790731267,
+      "width": 2.494249173721938,
+      "length": 5.019169420926874,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_02c954a9",
+      "from": "room_3d596be4",
+      "to": "room_02c954a9",
+      "similarity": 0.5,
+      "width": 2.5,
+      "length": 5,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_c2278da7",
+      "from": "room_3d596be4",
+      "to": "room_c2278da7",
+      "similarity": 0.48467132992594675,
+      "width": 2.4540139897778404,
+      "length": 5.153286700740533,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_0c9563ff",
+      "from": "room_3d596be4",
+      "to": "room_0c9563ff",
+      "similarity": 0.485472883903487,
+      "width": 2.456418651710461,
+      "length": 5.14527116096513,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_7b730383",
+      "from": "room_3d596be4",
+      "to": "room_7b730383",
+      "similarity": 0.48479155033153576,
+      "width": 2.454374650994607,
+      "length": 5.152084496684642,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_3d596be4_room_bfe90961",
+      "from": "room_3d596be4",
+      "to": "room_bfe90961",
+      "similarity": 0.4288739499846542,
+      "width": 2.2866218499539626,
+      "length": 5.7112605001534575,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_4842a958",
+      "from": "room_7f1fb19f",
+      "to": "room_4842a958",
+      "similarity": 0.49808305790731267,
+      "width": 2.494249173721938,
+      "length": 5.019169420926874,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_02c954a9",
+      "from": "room_7f1fb19f",
+      "to": "room_02c954a9",
+      "similarity": 0.5,
+      "width": 2.5,
+      "length": 5,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_c2278da7",
+      "from": "room_7f1fb19f",
+      "to": "room_c2278da7",
+      "similarity": 0.48467132992594675,
+      "width": 2.4540139897778404,
+      "length": 5.153286700740533,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_0c9563ff",
+      "from": "room_7f1fb19f",
+      "to": "room_0c9563ff",
+      "similarity": 0.485472883903487,
+      "width": 2.456418651710461,
+      "length": 5.14527116096513,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_7b730383",
+      "from": "room_7f1fb19f",
+      "to": "room_7b730383",
+      "similarity": 0.48479155033153576,
+      "width": 2.454374650994607,
+      "length": 5.152084496684642,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7f1fb19f_room_bfe90961",
+      "from": "room_7f1fb19f",
+      "to": "room_bfe90961",
+      "similarity": 0.4288739499846542,
+      "width": 2.2866218499539626,
+      "length": 5.7112605001534575,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_64f13190_room_4842a958",
+      "from": "room_64f13190",
+      "to": "room_4842a958",
+      "similarity": 0.6883521402818025,
+      "width": 3.0650564208454076,
+      "length": 3.1164785971819753,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_64f13190_room_02c954a9",
+      "from": "room_64f13190",
+      "to": "room_02c954a9",
+      "similarity": 0.6864351981891151,
+      "width": 3.0593055945673453,
+      "length": 3.1356480181088484,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_64f13190_room_3b2d06f8",
+      "from": "room_64f13190",
+      "to": "room_3b2d06f8",
+      "similarity": 0.44326794834721017,
+      "width": 2.3298038450416305,
+      "length": 5.567320516527898,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4842a958_room_02c954a9",
+      "from": "room_4842a958",
+      "to": "room_02c954a9",
+      "similarity": 0.9980830579073128,
+      "width": 3.994249173721938,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4842a958_room_c2278da7",
+      "from": "room_4842a958",
+      "to": "room_c2278da7",
+      "similarity": 0.4865882720186341,
+      "width": 2.4597648160559022,
+      "length": 5.134117279813659,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4842a958_room_0c9563ff",
+      "from": "room_4842a958",
+      "to": "room_0c9563ff",
+      "similarity": 0.48355594181079964,
+      "width": 2.450667825432399,
+      "length": 5.164440581892004,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4842a958_room_7b730383",
+      "from": "room_4842a958",
+      "to": "room_7b730383",
+      "similarity": 0.4828746082388484,
+      "width": 2.4486238247165453,
+      "length": 5.171253917611516,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_4842a958_room_bfe90961",
+      "from": "room_4842a958",
+      "to": "room_bfe90961",
+      "similarity": 0.4269570078919669,
+      "width": 2.2808710236759007,
+      "length": 5.730429921080331,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_02c954a9_room_c2278da7",
+      "from": "room_02c954a9",
+      "to": "room_c2278da7",
+      "similarity": 0.48467132992594675,
+      "width": 2.4540139897778404,
+      "length": 5.153286700740533,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_02c954a9_room_0c9563ff",
+      "from": "room_02c954a9",
+      "to": "room_0c9563ff",
+      "similarity": 0.485472883903487,
+      "width": 2.456418651710461,
+      "length": 5.14527116096513,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_02c954a9_room_7b730383",
+      "from": "room_02c954a9",
+      "to": "room_7b730383",
+      "similarity": 0.48479155033153576,
+      "width": 2.454374650994607,
+      "length": 5.152084496684642,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_02c954a9_room_bfe90961",
+      "from": "room_02c954a9",
+      "to": "room_bfe90961",
+      "similarity": 0.4288739499846542,
+      "width": 2.2866218499539626,
+      "length": 5.7112605001534575,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c2278da7_room_0c9563ff",
+      "from": "room_c2278da7",
+      "to": "room_0c9563ff",
+      "similarity": 0.9701442138294338,
+      "width": 3.9104326414883017,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c2278da7_room_7b730383",
+      "from": "room_c2278da7",
+      "to": "room_7b730383",
+      "similarity": 0.9694628802574825,
+      "width": 3.9083886407724475,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c2278da7_room_3b2d06f8",
+      "from": "room_c2278da7",
+      "to": "room_3b2d06f8",
+      "similarity": 0.6415040800840418,
+      "width": 2.9245122402521253,
+      "length": 3.5849591991595817,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_c2278da7_room_bfe90961",
+      "from": "room_c2278da7",
+      "to": "room_bfe90961",
+      "similarity": 0.413545279910601,
+      "width": 2.2406358397318034,
+      "length": 5.86454720089399,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_0c9563ff_room_7b730383",
+      "from": "room_0c9563ff",
+      "to": "room_7b730383",
+      "similarity": 0.9993186664280489,
+      "width": 3.9979559992841467,
+      "length": 2,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_0c9563ff_room_3b2d06f8",
+      "from": "room_0c9563ff",
+      "to": "room_3b2d06f8",
+      "similarity": 0.6713598662546081,
+      "width": 3.014079598763824,
+      "length": 3.286401337453919,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_0c9563ff_room_bfe90961",
+      "from": "room_0c9563ff",
+      "to": "room_bfe90961",
+      "similarity": 0.44340106608116725,
+      "width": 2.3302031982435016,
+      "length": 5.565989339188327,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7b730383_room_3b2d06f8",
+      "from": "room_7b730383",
+      "to": "room_3b2d06f8",
+      "similarity": 0.6720411998265592,
+      "width": 3.016123599479678,
+      "length": 3.279588001734408,
+      "decay": 0
+    },
+    {
+      "id": "corridor_room_7b730383_room_bfe90961",
+      "from": "room_7b730383",
+      "to": "room_bfe90961",
+      "similarity": 0.44408239965311846,
+      "width": 2.3322471989593554,
+      "length": 5.559176003468815,
+      "decay": 0
+    }
+  ],
+  "artifacts": [],
+  "stats": {
+    "totalRooms": 22,
+    "totalCorridors": 158,
+    "topics": [
+      "existential",
+      "tech",
+      "liminal",
+      "science",
+      "culture",
+      "politics"
+    ],
+    "avgSentiment": 0.13636363636363635,
+    "avgVirality": 1.3308596171058247
+  }
+}
