@@ -11,6 +11,7 @@ const { TwitterObserver } = require('./observer');
 const { RoomGenerator } = require('./rooms');
 const { TopologyEngine } = require('./topology');
 const { DecayEngine } = require('./decay');
+const { CommentaryGenerator } = require('./commentary');
 
 class World {
   constructor(configPath) {
@@ -90,10 +91,14 @@ class World {
       this.state.rooms = [...active, ...decayed];
     }
 
-    // 4. Add new rooms
+    // 4. Generate Nex commentary for new rooms
+    console.log('Generating commentary...');
+    CommentaryGenerator.annotateRooms(newRooms);
+
+    // 5. Add new rooms
     this.state.rooms.push(...newRooms);
 
-    // 5. Rebuild topology with all rooms
+    // 6. Rebuild topology with all rooms
     console.log('Building topology...');
     // Reset connections before rebuilding
     for (const room of this.state.rooms) {
@@ -103,7 +108,7 @@ class World {
     this.state.corridors = topo.corridors;
     this.state.stats = topo.stats;
 
-    // 6. Update metadata
+    // 7. Update metadata
     this.state.lastUpdate = Date.now();
     this.state.observationCycles++;
 
