@@ -71,16 +71,17 @@
             width: 4px; height: 4px;
             background: #4ade80;
             border-radius: 50%;
-            animation: bpulse 2s ease-in-out infinite;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .status-text { font-size: 10px; color: #1a1a1a; }
 
-        @keyframes bpulse {
+        @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.2; }
         }
 
+        /* Room tooltip on hover */
         #tooltip {
             position: fixed;
             display: none;
@@ -168,6 +169,8 @@
     var particles = [];
     var mouseX = 0, mouseY = 0;
     var hoveredRoom = null;
+
+    // Each room gets animation state
     var roomStates = new Map();
 
     function resize() {
@@ -182,6 +185,7 @@
     window.addEventListener('resize', resize);
     resize();
 
+    // Particles floating in the void
     function initParticles() {
         particles = [];
         for (var i = 0; i < 80; i++) {
@@ -205,6 +209,7 @@
             document.getElementById('status-text').textContent =
                 'cycle ' + worldState.observationCycles + ' — ' + worldState.rooms.length + ' rooms breathing';
 
+            // Initialize room animation states
             worldState.rooms.forEach(function(room) {
                 if (!roomStates.has(room.id)) {
                     roomStates.set(room.id, {
@@ -212,12 +217,14 @@
                         pulsePhase: Math.random() * Math.PI * 2,
                         pulseSpeed: 0.5 + Math.random() * 1.5,
                         breathPhase: Math.random() * Math.PI * 2,
+                        fragmentGlitch: 0,
                         screenX: 0,
                         screenY: 0
                     });
                 }
             });
 
+            // Map positions to screen space
             var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
             worldState.rooms.forEach(function(r) {
                 if (r.position.x < minX) minX = r.position.x;
@@ -258,10 +265,12 @@
             var p = particles[i];
             p.x += p.vx;
             p.y += p.vy;
+
             if (p.x < 0) p.x = W;
             if (p.x > W) p.x = 0;
             if (p.y < 0) p.y = H;
             if (p.y > H) p.y = 0;
+
             ctx.fillStyle = 'rgba(255, 255, 255, ' + p.alpha + ')';
             ctx.fillRect(p.x, p.y, p.size, p.size);
         }
@@ -282,10 +291,13 @@
             if (!fromState || !toState) continue;
 
             var fromColor = TOPIC_COLORS[fromRoom.topic] || [100, 100, 100];
+            var toColor = TOPIC_COLORS[toRoom.topic] || [100, 100, 100];
 
+            // Flowing energy along corridors
             var flowPos = (time * 0.3 + i * 0.7) % 1;
             var baseAlpha = 0.02 + c.similarity * 0.04;
 
+            // Draw base line
             ctx.strokeStyle = 'rgba(' + fromColor[0] + ',' + fromColor[1] + ',' + fromColor[2] + ',' + baseAlpha + ')';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
@@ -293,6 +305,7 @@
             ctx.lineTo(toState.screenX, toState.screenY);
             ctx.stroke();
 
+            // Draw flowing dot
             var fx = fromState.screenX + (toState.screenX - fromState.screenX) * flowPos;
             var fy = fromState.screenY + (toState.screenY - fromState.screenY) * flowPos;
             var flowAlpha = Math.sin(flowPos * Math.PI) * 0.3 * c.similarity;
@@ -306,6 +319,7 @@
 
     function drawRooms() {
         if (!worldState) return;
+
         hoveredRoom = null;
 
         for (var i = 0; i < worldState.rooms.length; i++) {
@@ -317,11 +331,17 @@
             var entropy = room.entropy.score;
             var virality = room.virality;
 
+            // Age since birth in animation
             var age = Math.min(1, (time - state.birth) * 0.5);
+
+            // Base size — virality makes it bigger
             var baseSize = (6 + virality * 3) * age;
+
+            // Breathing — rooms expand and contract
             var breath = Math.sin(time * state.pulseSpeed + state.breathPhase) * 0.15 + 1;
             var size = baseSize * breath;
 
+            // Pulse intensity — fresh rooms pulse brighter
             var pulseVal = Math.sin(time * state.pulseSpeed * 2 + state.pulsePhase);
             var brightness = 0.4 + (1 - entropy) * 0.4 + pulseVal * 0.15;
             brightness *= age;
@@ -329,6 +349,7 @@
             var x = state.screenX;
             var y = state.screenY;
 
+            // Check hover
             var dx = mouseX - x;
             var dy = mouseY - y;
             if (Math.sqrt(dx * dx + dy * dy) < size + 10) {
@@ -336,6 +357,7 @@
                 brightness = Math.min(1, brightness + 0.2);
             }
 
+            // Outer glow — breathing aura
             var glowSize = size * (3 + pulseVal * 0.5);
             var gradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
             gradient.addColorStop(0, 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + (brightness * 0.12) + ')');
@@ -346,7 +368,9 @@
             ctx.arc(x, y, glowSize, 0, Math.PI * 2);
             ctx.fill();
 
+            // Core
             if (entropy > 0.5) {
+                // Decaying rooms flicker and distort
                 var flicker = Math.random() > (1 - entropy * 0.3) ? 0.1 : brightness;
                 ctx.fillStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + flicker + ')';
                 ctx.beginPath();
@@ -367,23 +391,25 @@
                 ctx.fill();
             }
 
+            // Inner ring
             ctx.strokeStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + (brightness * 0.3) + ')';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.arc(x, y, size + 3 + pulseVal * 2, 0, Math.PI * 2);
             ctx.stroke();
 
+            // Room name — fades in
             if (age > 0.5) {
                 var textAlpha = (age - 0.5) * 2 * brightness * 0.4;
-                var glitchChars = String.fromCharCode(9608) + String.fromCharCode(9619) + String.fromCharCode(9618) + String.fromCharCode(9617);
-                var name;
                 if (entropy > 0.7) {
-                    name = room.name.split('').map(function(c) {
+                    // Glitch the name
+                    var glitchChars = '█▓▒░─│┼';
+                    var name = room.name.split('').map(function(c) {
                         return Math.random() < entropy * 0.4 ? glitchChars[Math.floor(Math.random() * glitchChars.length)] : c;
                     }).join('');
                     ctx.fillStyle = 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + (textAlpha * 0.5) + ')';
                 } else {
-                    name = room.name;
+                    var name = room.name;
                     ctx.fillStyle = 'rgba(255,255,255,' + textAlpha + ')';
                 }
                 ctx.font = '9px JetBrains Mono';
@@ -391,12 +417,14 @@
                 ctx.fillText(name, x, y + size + 16);
             }
 
+            // Floating fragment text near decaying rooms
             if (entropy > 0.3 && room.fragments && room.fragments.words.length > 0) {
                 var fragIdx = Math.floor((time * 0.5 + i) % room.fragments.words.length);
                 var word = room.fragments.words[fragIdx];
                 if (entropy > 0.6) {
+                    var glitchChars2 = '█▓▒░';
                     word = word.split('').map(function(c) {
-                        return Math.random() < entropy * 0.5 ? glitchChars[Math.floor(Math.random() * glitchChars.length)] : c;
+                        return Math.random() < entropy * 0.5 ? glitchChars2[Math.floor(Math.random() * glitchChars2.length)] : c;
                     }).join('');
                 }
                 var fragAngle = time * 0.3 + i;
@@ -417,6 +445,8 @@
             tooltip.style.display = 'block';
             tooltip.style.left = (mouseX + 16) + 'px';
             tooltip.style.top = (mouseY - 10) + 'px';
+
+            // Keep tooltip on screen
             if (mouseX + 320 > W) tooltip.style.left = (mouseX - 300) + 'px';
 
             var color = TOPIC_COLORS[hoveredRoom.topic] || [150, 150, 150];
@@ -435,6 +465,8 @@
 
     function draw() {
         time += 0.016;
+
+        // Fade trail instead of clear — gives ghosting effect
         ctx.fillStyle = 'rgba(5, 5, 8, 0.15)';
         ctx.fillRect(0, 0, W, H);
 
