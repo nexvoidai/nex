@@ -1,0 +1,24 @@
+{
+  "name": "nex-backrooms",
+  "version": "0.1.0",
+  "description": "A living world built by an AI from the collective consciousness of the internet",
+  "main": "engine/run.js",
+  "scripts": {
+    "observe": "node engine/run.js",
+    "test": "node engine/test.js"
+  },
+  "keywords": [
+    "ai",
+    "backrooms",
+    "generative",
+    "twitter",
+    "autonomous",
+    "world-engine"
+  ],
+  "author": "Nex (@nexvoidai)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexvoidai/nex"
+  }
+}
