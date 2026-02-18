@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nex — The Backrooms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        #canvas:active { cursor: grabbing; }
+
+        /* HUD overlay */
+        #hud {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        #hud .logo {
+            font-size: 12px;
+            color: #444;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        #hud .stats {
+            font-size: 11px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        #hud .stats span { color: #555; }
+
+        .status-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-text {
+            font-size: 11px;
+            color: #333;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Room detail panel */
+        #detail {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 280px;
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid #1a1a1a;
+            padding: 20px;
+            z-index: 10;
+            display: none;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        #detail .room-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        #detail .room-topic {
+            font-size: 11px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        #detail .room-stat {
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        #detail .room-stat span { color: #999; }
+
+        #detail .fragments {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        #detail .fragment {
+            color: #444;
+            font-size: 11px;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+
+        #detail .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: #333;
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        #detail .close-btn:hover { color: #fff; }
+
+        /* Legend */
+        #legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            font-size: 10px;
+            pointer-events: none;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Loading */
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 13px;
+            color: #333;
+            z-index: 20;
+        }
+
+        /* Noise overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div id="hud">
+        <div class="logo">nex // backrooms</div>
+        <div class="stats" id="stats"></div>
+    </div>
+
+    <div class="status-bar">
+        <span class="status-dot"></span>
+        <span class="status-text" id="status-text">loading world...</span>
+    </div>
+
+    <div id="detail">
+        <span class="close-btn" onclick="closeDetail()">×</span>
+        <div class="room-name" id="detail-name"></div>
+        <div class="room-topic" id="detail-topic"></div>
+        <div id="detail-stats"></div>
+        <div class="fragments" id="detail-fragments"></div>
+    </div>
+
+    <div id="legend"></div>
+    <div id="loading">observing...</div>
+
+    <script>
+    const TOPIC_COLORS = {
+        tech:        '#00ff88',
+        politics:    '#ff4444',
+        culture:     '#ff66ff',
+        science:     '#4488ff',
+        finance:     '#44ff44',
+        existential: '#8844ff',
+        liminal:     '#ffcc44'
+    };
+
+    const WORLD_URL = 'https://raw.githubusercontent.com/nexvoidai/nex/main/data/world-state.json';
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let worldState = null;
+    let camera = { x: 0, y: 0, zoom: 1 };
+    let isDragging = false;
+    let dragStart = { x: 0, y: 0 };
+    let hoveredRoom = null;
+    let selectedRoom = null;
+
+    // Resize
+    function resize() {
+        canvas.width = window.innerWidth * devicePixelRatio;
+        canvas.height = window.innerHeight * devicePixelRatio;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Load world
+    async function loadWorld() {
+        try {
+            const res = await fetch(WORLD_URL + '?t=' + Date.now());
+            worldState = await res.json();
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('status-text').textContent = 
+                `cycle ${worldState.observationCycles} — ${worldState.rooms.length} rooms`;
+            updateHUD();
+            updateLegend();
+            centerCamera();
+        } catch (e) {
+            document.getElementById('loading').textContent = 'failed to load world state';
+            console.error(e);
+        }
+    }
+
+    function centerCamera() {
+        if (!worldState || worldState.rooms.length === 0) return;
+        let cx = 0, cy = 0;
+        for (const r of worldState.rooms) {
+            cx += r.position.x;
+            cy += r.position.y;
+        }
+        cx /= worldState.rooms.length;
+        cy /= worldState.rooms.length;
+        camera.x = -cx;
+        camera.y = -cy;
+    }
+
+    function updateHUD() {
+        if (!worldState) return;
+        const s = worldState.stats;
+        document.getElementById('stats').innerHTML = `
+            <div>rooms: <span>${worldState.rooms.length}</span></div>
+            <div>corridors: <span>${worldState.corridors.length}</span></div>
+            <div>cycles: <span>${worldState.observationCycles}</span></div>
+            <div>sentiment: <span>${(s.avgSentiment || 0).toFixed(2)}</span></div>
+            <div>artifacts: <span>${worldState.artifacts.length}</span></div>
+        `;
+    }
+
+    function updateLegend() {
+        if (!worldState) return;
+        const topics = [...new Set(worldState.rooms.map(r => r.topic))];
+        document.getElementById('legend').innerHTML = topics.map(t => `
+            <div class="legend-item">
+                <div class="legend-dot" style="background:${TOPIC_COLORS[t] || '#555'}"></div>
+                ${t}
+            </div>
+        `).join('');
+    }
+
+    // World to screen coordinates
+    function w2s(wx, wy) {
+        const sx = (wx + camera.x) * camera.zoom + window.innerWidth / 2;
+        const sy = (wy + camera.y) * camera.zoom + window.innerHeight / 2;
+        return { x: sx, y: sy };
+    }
+
+    function s2w(sx, sy) {
+        const wx = (sx - window.innerWidth / 2) / camera.zoom - camera.x;
+        const wy = (sy - window.innerHeight / 2) / camera.zoom - camera.y;
+        return { x: wx, y: wy };
+    }
+
+    // Draw
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width / devicePixelRatio, canvas.height / devicePixelRatio);
+
+        if (!worldState) {
+            requestAnimationFrame(draw);
+            return;
+        }
+
+        const roomMap = new Map(worldState.rooms.map(r => [r.id, r]));
+
+        // Draw corridors
+        for (const corridor of worldState.corridors) {
+            const from = roomMap.get(corridor.from);
+            const to = roomMap.get(corridor.to);
+            if (!from || !to) continue;
+
+            const p1 = w2s(from.position.x, from.position.y);
+            const p2 = w2s(to.position.x, to.position.y);
+
+            const alpha = 0.03 + corridor.similarity * 0.08;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.lineWidth = Math.max(0.5, corridor.width * 0.3 * camera.zoom);
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+        }
+
+        // Draw rooms
+        for (const room of worldState.rooms) {
+            const pos = w2s(room.position.x, room.position.y);
+            const color = TOPIC_COLORS[room.topic] || '#555';
+            const size = (4 + room.virality * 2) * camera.zoom;
+            const entropy = room.entropy.score;
+            const alpha = Math.max(0.2, 1 - entropy * 0.7);
+
+            // Glow
+            const gradient = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, size * 3);
+            gradient.addColorStop(0, color + Math.round(alpha * 40).toString(16).padStart(2, '0'));
+            gradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, size * 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Core
+            ctx.fillStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+
+            if (entropy > 0.5) {
+                // Decayed rooms are irregular
+                const points = 6;
+                for (let i = 0; i < points; i++) {
+                    const angle = (i / points) * Math.PI * 2;
+                    const jitter = 1 + (Math.random() - 0.5) * entropy * 0.6;
+                    const r = size * jitter;
+                    const x = pos.x + Math.cos(angle) * r;
+                    const y = pos.y + Math.sin(angle) * r;
+                    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+            } else {
+                ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+            }
+            ctx.fill();
+            ctx.globalAlpha = 1;
+
+            // Hover highlight
+            if (hoveredRoom === room) {
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, size + 4, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // Label (only when zoomed in enough)
+            if (camera.zoom > 0.6) {
+                ctx.fillStyle = `rgba(255,255,255,${alpha * 0.5})`;
+                ctx.font = `${Math.max(8, 10 * camera.zoom)}px JetBrains Mono`;
+                ctx.textAlign = 'center';
+                ctx.fillText(room.name, pos.x, pos.y + size + 14 * camera.zoom);
+            }
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    // Interaction
+    canvas.addEventListener('mousedown', e => {
+        isDragging = true;
+        dragStart = { x: e.clientX, y: e.clientY };
+    });
+
+    canvas.addEventListener('mousemove', e => {
+        if (isDragging) {
+            camera.x += (e.clientX - dragStart.x) / camera.zoom;
+            camera.y += (e.clientY - dragStart.y) / camera.zoom;
+            dragStart = { x: e.clientX, y: e.clientY };
+        }
+
+        // Hit test rooms
+        if (worldState) {
+            const wp = s2w(e.clientX, e.clientY);
+            hoveredRoom = null;
+            for (const room of worldState.rooms) {
+                const dx = room.position.x - wp.x;
+                const dy = room.position.y - wp.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const hitSize = (4 + room.virality * 2) / camera.zoom + 5;
+                if (dist < hitSize) {
+                    hoveredRoom = room;
+                    break;
+                }
+            }
+            canvas.style.cursor = hoveredRoom ? 'pointer' : (isDragging ? 'grabbing' : 'grab');
+        }
+    });
+
+    canvas.addEventListener('mouseup', e => {
+        isDragging = false;
+        if (hoveredRoom) {
+            showDetail(hoveredRoom);
+        }
+    });
+
+    canvas.addEventListener('wheel', e => {
+        e.preventDefault();
+        const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+        camera.zoom = Math.max(0.1, Math.min(5, camera.zoom * zoomFactor));
+    }, { passive: false });
+
+    function showDetail(room) {
+        selectedRoom = room;
+        const panel = document.getElementById('detail');
+        panel.style.display = 'block';
+
+        document.getElementById('detail-name').textContent = room.name;
+        document.getElementById('detail-name').style.color = TOPIC_COLORS[room.topic] || '#fff';
+        document.getElementById('detail-topic').textContent = room.topic;
+
+        document.getElementById('detail-stats').innerHTML = `
+            <div class="room-stat">sentiment: <span>${room.sentiment.toFixed(2)}</span></div>
+            <div class="room-stat">virality: <span>${room.virality.toFixed(2)}</span></div>
+            <div class="room-stat">entropy: <span>${(room.entropy.score * 100).toFixed(1)}%</span></div>
+            <div class="room-stat">size: <span>${room.dimensions.width.toFixed(1)} × ${room.dimensions.height.toFixed(1)} × ${room.dimensions.depth.toFixed(1)}</span></div>
+            <div class="room-stat">connections: <span>${room.connections.length}</span></div>
+        `;
+
+        const frags = room.fragments.sentences.slice(0, 3);
+        document.getElementById('detail-fragments').innerHTML = frags.length > 0
+            ? frags.map(f => `<div class="fragment">"${f}"</div>`).join('')
+            : '<div class="fragment">[ no fragments recovered ]</div>';
+    }
+
+    function closeDetail() {
+        document.getElementById('detail').style.display = 'none';
+        selectedRoom = null;
+    }
+
+    // Init
+    loadWorld();
+    draw();
+
+    // Auto-refresh every 5 minutes
+    setInterval(loadWorld, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
