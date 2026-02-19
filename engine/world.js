@@ -12,6 +12,7 @@ const { RoomGenerator } = require('./rooms');
 const { TopologyEngine } = require('./topology');
 const { DecayEngine } = require('./decay');
 const { CommentaryGenerator } = require('./commentary');
+const { EntityTracker } = require('./entities');
 
 class World {
   constructor(configPath) {
@@ -19,6 +20,7 @@ class World {
     this.observer = new TwitterObserver(config.twitter);
     this.roomGen = new RoomGenerator();
     this.topology = new TopologyEngine();
+    this.entityTracker = new EntityTracker();
 
     this.state = {
       version: 1,
@@ -28,6 +30,7 @@ class World {
       rooms: [],
       corridors: [],
       artifacts: [], // fragments from collapsed rooms
+      entities: [], // recurring people/concepts that wander the halls
       stats: {}
     };
   }
@@ -39,7 +42,9 @@ class World {
     try {
       const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       this.state = data;
-      console.log(`Loaded world: ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors`);
+      if (!this.state.entities) this.state.entities = [];
+      this.entityTracker.load(this.state.entities);
+      console.log(`Loaded world: ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors, ${this.state.entities.length} entities`);
     } catch (e) {
       console.log('No existing world state found, starting fresh.');
     }
@@ -98,7 +103,18 @@ class World {
     // 5. Add new rooms
     this.state.rooms.push(...newRooms);
 
-    // 6. Rebuild topology with all rooms
+    // 6. Track entities
+    console.log('Tracking entities...');
+    const newEntities = this.entityTracker.update(observations);
+    if (newEntities.length > 0) {
+      console.log(`New entities: ${newEntities.map(e => e.name).join(', ')}`);
+    }
+    this.entityTracker.wander(this.state.rooms);
+    this.state.entities = this.entityTracker.toArray();
+    const entitySummary = this.entityTracker.summary();
+    console.log(`Entities: ${entitySummary.total} (${entitySummary.people} people, ${entitySummary.concepts} concepts)`);
+
+    // 7. Rebuild topology with all rooms
     console.log('Building topology...');
     // Reset connections before rebuilding
     for (const room of this.state.rooms) {
@@ -108,7 +124,7 @@ class World {
     this.state.corridors = topo.corridors;
     this.state.stats = topo.stats;
 
-    // 7. Update metadata
+    // 8. Update metadata
     this.state.lastUpdate = Date.now();
     this.state.observationCycles++;
 
@@ -128,6 +144,7 @@ class World {
       rooms: s.rooms.length,
       corridors: s.corridors.length,
       artifacts: s.artifacts.length,
+      entities: (s.entities || []).length,
       cycles: s.observationCycles,
       topics: s.stats.topics || [],
       avgSentiment: (s.stats.avgSentiment || 0).toFixed(2),
