@@ -197,13 +197,37 @@
         var directions = ['north', 'south', 'east', 'west', 'above', 'below'];
         var conns = room.connections || [];
 
+        // Limit to 5 most interesting exits — prefer diverse topics and low entropy
+        var candidates = [];
         for (var i = 0; i < conns.length; i++) {
             var connRoom = roomMap.get(conns[i]);
             if (!connRoom) continue;
-            var dir = directions[i % directions.length];
-            exits.push({ direction: dir, room: connRoom });
+            candidates.push({ room: connRoom, index: i });
+        }
+
+        // Sort: unvisited first, then by diversity of topic, then by low entropy
+        candidates.sort(function(a, b) {
+            var aVisited = visitedRooms.has(a.room.id) ? 1 : 0;
+            var bVisited = visitedRooms.has(b.room.id) ? 1 : 0;
+            if (aVisited !== bVisited) return aVisited - bVisited;
+            // Prefer different topics from current room
+            var aSameTopic = a.room.topic === room.topic ? 1 : 0;
+            var bSameTopic = b.room.topic === room.topic ? 1 : 0;
+            if (aSameTopic !== bSameTopic) return aSameTopic - bSameTopic;
+            return a.room.entropy.score - b.room.entropy.score;
+        });
+
+        var maxExits = 5;
+        for (var j = 0; j < Math.min(maxExits, candidates.length); j++) {
+            var dir = directions[j % directions.length];
+            exits.push({ direction: dir, room: candidates[j].room });
         }
         return exits;
+    }
+
+    function getEntitiesInRoom(roomId) {
+        if (!worldState.entities) return [];
+        return worldState.entities.filter(function(e) { return e.currentRoom === roomId; });
     }
 
     function describeRoom(room, brief) {
@@ -236,15 +260,14 @@
         if (isDecayed) amb = scramble(amb, entropy * 0.3);
         print('  ' + amb, 'mid');
 
-        // Wall description
-        var wallDesc = WALL_DESC[room.topic] || 'blank walls';
-        if (isDecayed) wallDesc = scramble(wallDesc, entropy * 0.4);
-        print('  The walls are ' + wallDesc + '.', 'dim');
-
-        // Dimensions
-        var d = room.dimensions;
-        print('  Room dimensions: ' + d.width.toFixed(1) + ' x ' +
-              d.height.toFixed(1) + ' x ' + d.depth.toFixed(1) + ' units', 'muted');
+        // Entities in room
+        var entities = getEntitiesInRoom(room.id);
+        if (entities.length > 0) {
+            var entityNames = entities.map(function(e) {
+                return '<span class="' + topicClass + '">' + e.name + '</span>';
+            }).join(', ');
+            print('  You sense presences: ' + entityNames, 'mid');
+        }
 
         // Nex commentary — my thoughts on what I observed
         if (room.commentary) {
@@ -412,17 +435,45 @@
             case 'map':
                 print('  <span class="dim">Rooms explored: ' + visitedRooms.size + ' / ' + worldState.rooms.length + '</span>');
                 printBlank();
+                // Group by topic
+                var topicGroups = {};
                 worldState.rooms.forEach(function(r) {
-                    var visited = visitedRooms.has(r.id);
-                    var isCurrent = r.id === currentRoom.id;
-                    var colorClass = TOPIC_CLASSES[r.topic] || '';
-                    var name = r.name;
-                    if (r.entropy.score > 0.7) name = scramble(name, r.entropy.score);
-                    var prefix = isCurrent ? ' >> ' : '    ';
-                    var suffix = visited ? '' : ' <span class="muted">(unexplored)</span>';
-                    if (r.entropy.score > 0.8) suffix = ' <span class="warning">(collapsing)</span>';
-                    print(prefix + '<span class="' + colorClass + '">' + name + '</span> — ' +
-                          r.topic + ' [' + (r.entropy.score * 100).toFixed(0) + '%]' + suffix);
+                    if (!topicGroups[r.topic]) topicGroups[r.topic] = [];
+                    topicGroups[r.topic].push(r);
+                });
+                Object.keys(topicGroups).sort().forEach(function(topic) {
+                    var colorClass = TOPIC_CLASSES[topic] || '';
+                    var rooms = topicGroups[topic];
+                    // Only show visited rooms + current room's neighbors + a count of unexplored
+                    var visited = rooms.filter(function(r) { return visitedRooms.has(r.id) || r.id === currentRoom.id; });
+                    var adjacent = rooms.filter(function(r) {
+                        return !visitedRooms.has(r.id) && r.id !== currentRoom.id &&
+                               currentRoom.connections && currentRoom.connections.indexOf(r.id) !== -1;
+                    });
+                    var hidden = rooms.length - visited.length - adjacent.length;
+
+                    print('  <span class="' + colorClass + '">[' + topic + ']</span> <span class="muted">(' + rooms.length + ' rooms)</span>');
+
+                    visited.forEach(function(r) {
+                        var isCurrent = r.id === currentRoom.id;
+                        var name = r.name;
+                        if (r.entropy.score > 0.7) name = scramble(name, r.entropy.score);
+                        var prefix = isCurrent ? '   >> ' : '      ';
+                        var suffix = '';
+                        if (r.entropy.score > 0.8) suffix = ' <span class="warning">(collapsing)</span>';
+                        print(prefix + name + ' <span class="muted">[' + (r.entropy.score * 100).toFixed(0) + '%]</span>' + suffix);
+                    });
+
+                    adjacent.forEach(function(r) {
+                        var name = r.name;
+                        if (r.entropy.score > 0.7) name = scramble(name, r.entropy.score);
+                        print('      <span class="dim">' + name + ' (nearby)</span>');
+                    });
+
+                    if (hidden > 0) {
+                        print('      <span class="muted">... ' + hidden + ' more unexplored</span>');
+                    }
+                    printBlank();
                 });
                 break;
 
