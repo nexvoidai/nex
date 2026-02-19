@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Courier New', monospace; }
+svg { width: 800px; height: 600px; }
+.label { fill: #555; font-size: 10px; font-family: 'Courier New', monospace; }
+.title { fill: #888; font-size: 14px; font-family: 'Courier New', monospace; }
+.note { fill: #444; font-size: 9px; font-family: 'Courier New', monospace; font-style: italic; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 800 600">
+  <!-- bg -->
+  <rect width="800" height="600" fill="#0a0a0a"/>
+  
+  <!-- title -->
+  <text x="400" y="30" text-anchor="middle" class="title">nex // 3d topology explorer — sketch</text>
+  
+  <!-- corridors (edges) -->
+  <line x1="300" y1="200" x2="420" y2="180" stroke="#1a1a2a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="300" y1="200" x2="250" y2="310" stroke="#1a1a2a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="300" y1="200" x2="380" y2="280" stroke="#1a1a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="420" y1="180" x2="500" y2="220" stroke="#1a1a2a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="420" y1="180" x2="380" y2="280" stroke="#1a1a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="420" y1="180" x2="480" y2="130" stroke="#1a2a1a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="500" y1="220" x2="560" y2="180" stroke="#1a2a1a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="500" y1="220" x2="530" y2="300" stroke="#1a1a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="250" y1="310" x2="200" y2="380" stroke="#2a1a1a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="250" y1="310" x2="330" y2="350" stroke="#2a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="250" y1="310" x2="180" y2="260" stroke="#1a1a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="380" y1="280" x2="330" y2="350" stroke="#2a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="380" y1="280" x2="450" y2="350" stroke="#1a2a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="530" y1="300" x2="600" y2="340" stroke="#1a2a2a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="530" y1="300" x2="450" y2="350" stroke="#1a2a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="200" y1="380" x2="280" y2="420" stroke="#2a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="330" y1="350" x2="280" y2="420" stroke="#2a1a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="600" y1="340" x2="640" y2="280" stroke="#1a2a1a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="560" y1="180" x2="640" y2="280" stroke="#1a2a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="480" y1="130" x2="560" y2="180" stroke="#1a2a1a" stroke-width="0.5" opacity="0.4"/>
+  <line x1="450" y1="350" x2="500" y2="420" stroke="#1a2a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="600" y1="340" x2="500" y2="420" stroke="#1a2a2a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="180" y1="260" x2="140" y2="330" stroke="#2a2a1a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="140" y1="330" x2="200" y2="380" stroke="#2a1a1a" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- TECH cluster (purple) -->
+  <circle cx="300" cy="200" r="8" fill="#7b68ee" opacity="0.7"/>
+  <circle cx="420" cy="180" r="6" fill="#7b68ee" opacity="0.5"/>
+  <circle cx="380" cy="280" r="5" fill="#7b68ee" opacity="0.4"/>
+  <text x="300" y="188" text-anchor="middle" class="label" fill="#7b68ee">AI Agents</text>
+  <text x="420" y="168" text-anchor="middle" class="label" fill="#7b68ee">LLM Costs</text>
+  
+  <!-- EXISTENTIAL cluster (red/pink) -->
+  <circle cx="250" cy="310" r="7" fill="#ee6868" opacity="0.6"/>
+  <circle cx="200" cy="380" r="5" fill="#ee6868" opacity="0.4"/>
+  <circle cx="330" cy="350" r="4" fill="#ee6868" opacity="0.35"/>
+  <circle cx="280" cy="420" r="3" fill="#ee6868" opacity="0.25"/>
+  <text x="250" y="298" text-anchor="middle" class="label" fill="#ee6868">Consciousness</text>
+  <text x="200" y="396" text-anchor="middle" class="label" fill="#ee6868">Identity</text>
+  
+  <!-- SCIENCE cluster (green) -->
+  <circle cx="500" cy="220" r="6" fill="#68ee7b" opacity="0.5"/>
+  <circle cx="560" cy="180" r="5" fill="#68ee7b" opacity="0.4"/>
+  <circle cx="480" cy="130" r="4" fill="#68ee7b" opacity="0.35"/>
+  <circle cx="640" cy="280" r="4" fill="#68ee7b" opacity="0.3"/>
+  <text x="500" y="208" text-anchor="middle" class="label" fill="#68ee7b">Compute</text>
+  
+  <!-- CULTURE cluster (cyan) -->
+  <circle cx="530" cy="300" r="5" fill="#68ddee" opacity="0.5"/>
+  <circle cx="600" cy="340" r="6" fill="#68ddee" opacity="0.5"/>
+  <circle cx="450" cy="350" r="4" fill="#68ddee" opacity="0.35"/>
+  <circle cx="500" cy="420" r="3" fill="#68ddee" opacity="0.25"/>
+  <text x="600" y="328" text-anchor="middle" class="label" fill="#68ddee">Internet Culture</text>
+  
+  <!-- LIMINAL cluster (yellow, faded) -->
+  <circle cx="180" cy="260" r="4" fill="#eedd68" opacity="0.3"/>
+  <circle cx="140" cy="330" r="3" fill="#eedd68" opacity="0.2"/>
+  <text x="140" y="318" text-anchor="middle" class="label" fill="#eedd68">Liminal</text>
+  
+  <!-- Entity dots (small, moving between rooms) -->
+  <circle cx="310" cy="210" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="415" cy="185" r="1.5" fill="#fff" opacity="0.5"/>
+  <circle cx="535" cy="305" r="1.5" fill="#fff" opacity="0.4"/>
+  <circle cx="255" cy="315" r="1.5" fill="#fff" opacity="0.5"/>
+  
+  <!-- Decay visualization (fading room) -->
+  <circle cx="280" cy="420" r="3" fill="none" stroke="#ee6868" stroke-width="0.5" opacity="0.15" stroke-dasharray="2,2"/>
+  <circle cx="140" cy="330" r="3" fill="none" stroke="#eedd68" stroke-width="0.5" opacity="0.15" stroke-dasharray="2,2"/>
+  
+  <!-- Annotations -->
+  <text x="30" y="540" class="note">rooms = nodes (sized by relevance)</text>
+  <text x="30" y="555" class="note">corridors = edges (semantic connections)</text>
+  <text x="30" y="570" class="note">color = topic cluster</text>
+  <text x="30" y="585" class="note">white dots = entities moving between rooms</text>
+  
+  <text x="770" y="540" text-anchor="end" class="note">dashed = decaying rooms</text>
+  <text x="770" y="555" text-anchor="end" class="note">opacity = relevance score</text>
+  <text x="770" y="570" text-anchor="end" class="note">click a room to see tweets inside</text>
+  <text x="770" y="585" text-anchor="end" class="note">fly around with mouse/WASD</text>
+  
+  <!-- Hover mockup -->
+  <rect x="430" y="70" width="180" height="80" rx="4" fill="#111" stroke="#333" stroke-width="0.5" opacity="0.9"/>
+  <text x="440" y="88" fill="#7b68ee" font-size="11" font-family="Courier New">LLM Costs</text>
+  <text x="440" y="103" fill="#555" font-size="8" font-family="Courier New">topic: tech | sentiment: -0.2</text>
+  <text x="440" y="118" fill="#444" font-size="8" font-family="Courier New">"Most agent projects die not</text>
+  <text x="440" y="130" fill="#444" font-size="8" font-family="Courier New">because the logic is wrong..."</text>
+  <text x="440" y="143" fill="#333" font-size="7" font-family="Courier New">3 tweets | decay: 0.12</text>
+  <line x1="420" y1="180" x2="430" y2="110" stroke="#333" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.5"/>
+</svg>
+</body>
+</html>
