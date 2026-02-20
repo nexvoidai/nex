@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { margin: 0; padding: 0; }
+body { background: #050505; overflow: hidden; }
+canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1500" height="500"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1500, H = 500;
+
+const colors = ['#7b68ee', '#ee6868', '#68ddee', '#68ee7b', '#eedd68', '#ee68dd', '#888'];
+
+const clusters = [
+    { cx: 180, cy: 150, spread: 120, count: 22, color: 0 },
+    { cx: 400, cy: 280, spread: 110, count: 20, color: 1 },
+    { cx: 600, cy: 150, spread: 130, count: 22, color: 2 },
+    { cx: 820, cy: 300, spread: 100, count: 18, color: 3 },
+    { cx: 1000, cy: 170, spread: 120, count: 20, color: 4 },
+    { cx: 1200, cy: 280, spread: 100, count: 16, color: 5 },
+    { cx: 300, cy: 400, spread: 80, count: 12, color: 6 },
+    { cx: 700, cy: 380, spread: 80, count: 12, color: 0 },
+    { cx: 1100, cy: 400, spread: 70, count: 10, color: 2 },
+    { cx: 1380, cy: 150, spread: 70, count: 10, color: 1 },
+    { cx: 500, cy: 80, spread: 60, count: 8, color: 3 },
+    { cx: 900, cy: 100, spread: 60, count: 8, color: 4 },
+];
+
+const nodes = [];
+
+clusters.forEach(cl => {
+    for (let i = 0; i < cl.count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.pow(Math.random(), 0.6) * cl.spread;
+        nodes.push({
+            x: cl.cx + Math.cos(angle) * dist,
+            y: cl.cy + Math.sin(angle) * dist,
+            r: Math.random() * 2.2 + 1.2,
+            color: colors[cl.color],
+            opacity: Math.random() * 0.4 + 0.4,
+            cluster: cl.color
+        });
+    }
+});
+
+for (let i = 0; i < 25; i++) {
+    nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1 + 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        opacity: Math.random() * 0.15 + 0.08,
+        cluster: -1
+    });
+}
+
+// Edges
+for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const sameCluster = nodes[i].cluster === nodes[j].cluster && nodes[i].cluster >= 0;
+        
+        if (sameCluster && dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(100, 100, 130, ${(1 - dist / 140) * 0.25})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+        } else if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(70, 70, 90, ${(1 - dist / 100) * 0.12})`;
+            ctx.lineWidth = 0.4;
+            ctx.stroke();
+        }
+    }
+}
+
+// Cross-cluster bridges
+for (let k = 0; k < 25; k++) {
+    const i = Math.floor(Math.random() * nodes.length);
+    const j = Math.floor(Math.random() * nodes.length);
+    if (i === j || nodes[i].cluster === nodes[j].cluster) continue;
+    const dx = nodes[i].x - nodes[j].x;
+    const dy = nodes[i].y - nodes[j].y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 250) {
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.strokeStyle = `rgba(123, 104, 238, 0.07)`;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+    }
+}
+
+// Nodes with glow
+nodes.forEach(node => {
+    // Soft glow
+    const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r * 5);
+    gradient.addColorStop(0, node.color + '20');
+    gradient.addColorStop(1, 'transparent');
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, node.r * 5, 0, Math.PI * 2);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    // Node
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+    ctx.globalAlpha = node.opacity;
+    ctx.fillStyle = node.color;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+});
+
+// Entity dots
+for (let i = 0; i < 12; i++) {
+    const node = nodes[Math.floor(Math.random() * nodes.length)];
+    ctx.beginPath();
+    ctx.arc(node.x + (Math.random()-0.5)*15, node.y + (Math.random()-0.5)*15, 0.8, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.fill();
+}
+</script>
+</body>
+</html>
