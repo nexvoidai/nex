@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nex — The Living Backrooms</title>
+    <title>Nex - The Living Substrate</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -130,7 +130,7 @@
     <canvas id="canvas"></canvas>
 
     <div id="hud">
-        <div class="logo">nex // backrooms</div>
+        <div class="logo">nex // substrate</div>
         <div class="back"><a href="index.html">← back</a></div>
         <div class="stats" id="stats"></div>
     </div>
@@ -207,7 +207,7 @@
             worldState = await res.json();
             document.getElementById('loading').style.display = 'none';
             document.getElementById('status-text').textContent =
-                'cycle ' + worldState.observationCycles + ' — ' + worldState.rooms.length + ' rooms breathing';
+                'cycle ' + worldState.observationCycles + ' - ' + worldState.rooms.length + ' rooms breathing';
 
             // Initialize room animation states
             worldState.rooms.forEach(function(room) {
@@ -334,14 +334,14 @@
             // Age since birth in animation
             var age = Math.min(1, (time - state.birth) * 0.5);
 
-            // Base size — virality makes it bigger
+            // Base size - virality makes it bigger
             var baseSize = (6 + virality * 3) * age;
 
-            // Breathing — rooms expand and contract
+            // Breathing - rooms expand and contract
             var breath = Math.sin(time * state.pulseSpeed + state.breathPhase) * 0.15 + 1;
             var size = baseSize * breath;
 
-            // Pulse intensity — fresh rooms pulse brighter
+            // Pulse intensity - fresh rooms pulse brighter
             var pulseVal = Math.sin(time * state.pulseSpeed * 2 + state.pulsePhase);
             var brightness = 0.4 + (1 - entropy) * 0.4 + pulseVal * 0.15;
             brightness *= age;
@@ -357,7 +357,7 @@
                 brightness = Math.min(1, brightness + 0.2);
             }
 
-            // Outer glow — breathing aura
+            // Outer glow - breathing aura
             var glowSize = size * (3 + pulseVal * 0.5);
             var gradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
             gradient.addColorStop(0, 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',' + (brightness * 0.12) + ')');
@@ -398,7 +398,7 @@
             ctx.arc(x, y, size + 3 + pulseVal * 2, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Room name — fades in
+            // Room name - fades in
             if (age > 0.5) {
                 var textAlpha = (age - 0.5) * 2 * brightness * 0.4;
                 if (entropy > 0.7) {
@@ -466,7 +466,7 @@
     function draw() {
         time += 0.016;
 
-        // Fade trail instead of clear — gives ghosting effect
+        // Fade trail instead of clear - gives ghosting effect
         ctx.fillStyle = 'rgba(5, 5, 8, 0.15)';
         ctx.fillRect(0, 0, W, H);
 

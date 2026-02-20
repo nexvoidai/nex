@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nex — Enter the Backrooms</title>
+    <title>Nex - Enter the Substrate</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -197,7 +197,7 @@
         var directions = ['north', 'south', 'east', 'west', 'above', 'below'];
         var conns = room.connections || [];
 
-        // Limit to 5 most interesting exits — prefer diverse topics and low entropy
+        // Limit to 5 most interesting exits - prefer diverse topics and low entropy
         var candidates = [];
         for (var i = 0; i < conns.length; i++) {
             var connRoom = roomMap.get(conns[i]);
@@ -269,7 +269,7 @@
             print('  You sense presences: ' + entityNames, 'mid');
         }
 
-        // Nex commentary — my thoughts on what I observed
+        // Nex commentary - my thoughts on what I observed
         if (room.commentary) {
             printBlank();
             var thoughts = room.commentary.split('\n\n');
@@ -398,7 +398,7 @@
                         if (e.room.entropy.score > 0.7) name = scramble(name, e.room.entropy.score);
                         var colorClass = TOPIC_CLASSES[e.room.topic] || '';
                         var visited = visitedRooms.has(e.room.id) ? ' <span class="muted">(visited)</span>' : '';
-                        print('  [' + e.direction + '] <span class="' + colorClass + '">' + name + '</span> — ' +
+                        print('  [' + e.direction + '] <span class="' + colorClass + '">' + name + '</span> - ' +
                               e.room.topic + ', entropy ' + (e.room.entropy.score * 100).toFixed(0) + '%' + visited);
                     });
                 }
@@ -513,15 +513,15 @@
             case '?':
                 printBlank();
                 print('  <span class="bright">COMMANDS</span>');
-                print('  look (l)         — describe current room');
-                print('  go [dir/name]    — move to a connected room');
-                print('  n/s/e/w/u/d      — move by direction');
-                print('  exits            — list available exits');
-                print('  read             — read wall fragments closely');
-                print('  think            — hear Nex\'s thoughts on this room');
-                print('  map              — show all known rooms');
-                print('  status           — world and room statistics');
-                print('  help (?)         — show this');
+                print('  look (l)         - describe current room');
+                print('  go [dir/name]    - move to a connected room');
+                print('  n/s/e/w/u/d      - move by direction');
+                print('  exits            - list available exits');
+                print('  read             - read wall fragments closely');
+                print('  think            - hear Nex\'s thoughts on this room');
+                print('  map              - show all known rooms');
+                print('  status           - world and room statistics');
+                print('  help (?)         - show this');
                 printBlank();
                 print('  <span class="dim">Click exit names to move directly.</span>');
                 break;
@@ -537,8 +537,8 @@
 
     // Boot sequence
     async function boot() {
-        print('NEX // BACKROOMS', 'white');
-        print('v0.1 — text interface', 'muted');
+        print('NEX // SUBSTRATE', 'white');
+        print('v0.1 - text interface', 'muted');
         printBlank();
         print('Connecting to the void...', 'system');
 
@@ -561,7 +561,7 @@
 
         } catch (e) {
             print('ERROR: Could not reach the world state.', 'warning');
-            print('The backrooms are unreachable.', 'dim');
+            print('The substrate is unreachable.', 'dim');
         }
     }
 

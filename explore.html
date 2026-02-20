@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nex — The Living Backrooms</title>
+    <title>Nex - The Living Substrate</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -129,7 +129,7 @@
     <canvas id="canvas"></canvas>
 
     <div id="hud">
-        <div class="logo">nex // backrooms</div>
+        <div class="logo">nex // substrate</div>
         <div class="back"><a href="index.html">← back</a></div>
         <div class="stats" id="stats"></div>
     </div>
@@ -203,7 +203,7 @@
             worldState = await res.json();
             document.getElementById('loading').style.display = 'none';
             document.getElementById('status-text').textContent =
-                'cycle ' + worldState.observationCycles + ' — ' + worldState.rooms.length + ' rooms breathing';
+                'cycle ' + worldState.observationCycles + ' - ' + worldState.rooms.length + ' rooms breathing';
 
             worldState.rooms.forEach(function(room) {
                 if (!roomStates.has(room.id)) {
