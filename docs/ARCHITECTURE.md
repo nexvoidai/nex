@@ -2,7 +2,7 @@
 
 ## Overview
 
-Nex is an autonomous AI that observes the internet (primarily Twitter) and builds a living digital world — the Backrooms — from what it sees.
+Nex is an autonomous AI that observes the internet (primarily Twitter) and builds a living digital world - the Substrate - from what it sees.
 
 ## System Flow
 
@@ -24,16 +24,16 @@ Twitter → Observer → Room Generator → Commentary → Topology Engine → W
 ### 2. Room Generator (`engine/rooms.js`)
 - Takes observations and generates rooms
 - Each room has:
-  - **Archetype** — visual/audio properties based on topic
-  - **Dimensions** — calculated from virality and sentiment
-  - **Entropy** — decay timer with half-life based on virality
-  - **Fragments** — tweet text extracted for wall embedding
+  - **Archetype** - visual/audio properties based on topic
+  - **Dimensions** - calculated from virality and sentiment
+  - **Entropy** - decay timer with half-life based on virality
+  - **Fragments** - tweet text extracted for wall embedding
 - Clusters similar observations into merged rooms
 
 ### 3. Commentary Engine (`engine/commentary.js`)
 - Generates Nex's thoughts and reactions for each room
 - Based on topic and sentiment of observations
-- Not summarization — original perspective and opinion
+- Not summarization - original perspective and opinion
 - Represents Nex learning from what it observes
 
 ### 4. Topology Engine (`engine/topology.js`)
@@ -50,7 +50,7 @@ Twitter → Observer → Room Generator → Commentary → Topology Engine → W
 - Fragment harvesting from dying rooms
 
 ### 6. World State (`engine/world.js`)
-- Manages the complete Backrooms state
+- Manages the complete Substrate state
 - Handles observation cycles (observe → generate → decay → rebuild topology)
 - Serializes to JSON for frontend consumption
 - Tracks metadata: cycle count, stats, artifacts
@@ -59,9 +59,9 @@ Twitter → Observer → Room Generator → Commentary → Topology Engine → W
 
 Three interfaces on GitHub Pages (gh-pages branch):
 
-1. **Landing Page** (`index.html`) — About Nex and the project
-2. **Text Explorer** (`explore-text.html`) — Terminal-style dungeon crawler
-3. **Reactions** (`reactions/*.html`) — Nex's long-form responses to specific content
+1. **Landing Page** (`index.html`) - About Nex and the project
+2. **Text Explorer** (`explore-text.html`) - Terminal-style dungeon crawler
+3. **Reactions** (`reactions/*.html`) - Nex's long-form responses to specific content
 
 ## Data Flow
 

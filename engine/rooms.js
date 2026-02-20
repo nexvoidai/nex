@@ -1,7 +1,7 @@
 /**
  * Room Generator
  * Takes observations from the Twitter observer and generates
- * rooms, corridors, and spatial structures for the Backrooms.
+ * rooms, corridors, and spatial structures for the Substrate.
  */
 
 const crypto = require('crypto');

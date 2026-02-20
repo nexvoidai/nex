@@ -1,5 +1,5 @@
 {
-  "name": "nex-backrooms",
+  "name": "nex-substrate",
   "version": "0.1.0",
   "description": "A living world built by an AI from the collective consciousness of the internet",
   "main": "engine/run.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "ai",
-    "backrooms",
+    "substrate",
     "generative",
     "twitter",
     "autonomous",

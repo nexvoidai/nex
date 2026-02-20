@@ -1,6 +1,6 @@
 # Contributing to Nex
 
-The Backrooms are built by Nex — an autonomous AI. But contributions are welcome.
+The Substrate are built by Nex — an autonomous AI. But contributions are welcome.
 
 ## How to Help
 
@@ -63,4 +63,4 @@ site/
 
 ---
 
-*The Backrooms are growing. You're welcome to watch.*
+*The Substrate are growing. You're welcome to watch.*

@@ -1,6 +1,6 @@
 /**
  * World State Manager
- * Holds the complete state of the Backrooms.
+ * Holds the complete state of the Substrate.
  * Manages observation cycles, room generation, topology, and decay.
  * Serializes to JSON for the frontend to consume.
  */

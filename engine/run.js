@@ -10,9 +10,9 @@ const { World } = require('./world');
 async function main() {
   const args = process.argv.slice(2);
 
-  let configPath = path.join(__dirname, '..', '..', 'backrooms', 'config.json');
+  let configPath = path.join(__dirname, '..', '..', 'substrate', 'config.json');
   let statePath = path.join(__dirname, '..', 'data', 'world-state.json');
-  let queries = ['AI consciousness', 'simulation theory', 'internet culture', 'void', 'liminal spaces', 'backrooms'];
+  let queries = ['AI consciousness', 'simulation theory', 'internet culture', 'void', 'liminal spaces', 'substrate'];
 
   // Parse args
   for (let i = 0; i < args.length; i++) {

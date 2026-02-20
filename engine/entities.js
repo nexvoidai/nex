@@ -1,7 +1,7 @@
 /**
  * Entity System
  * Tracks recurring people, projects, and concepts across observation cycles.
- * Entities wander the Backrooms — they're not rooms, they're inhabitants.
+ * Entities wander the Substrate — they're not rooms, they're inhabitants.
  * They appear in rooms relevant to their topic and accumulate history.
  */
 
