@@ -116,11 +116,56 @@
             margin-top: 2px;
         }
 
+        .room-card { cursor: pointer; }
+
         .room-fragment {
             font-size: 11px;
             color: #555;
             margin-top: 6px;
             font-style: italic;
+        }
+
+        .room-expanded {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #151515;
+            display: none;
+        }
+
+        .room-expanded.open { display: block; }
+
+        .room-detail {
+            font-size: 10px;
+            color: #444;
+            margin-bottom: 4px;
+        }
+
+        .room-detail span { color: #666; }
+
+        .room-connections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .room-connection {
+            font-size: 9px;
+            color: #333;
+            padding: 2px 6px;
+            border: 1px solid #151515;
+            border-radius: 3px;
+        }
+
+        .room-sentences {
+            margin-top: 8px;
+        }
+
+        .room-sentence {
+            font-size: 10px;
+            color: #3a3a3a;
+            margin-bottom: 2px;
+            word-break: break-word;
         }
 
         .room-topic {
@@ -377,7 +422,11 @@
                 politics: 'topic-politics'
             };
 
-            document.getElementById('room-feed').innerHTML = recent.map(room => {
+            // Store all rooms for connection lookups
+            const roomMap = {};
+            world.rooms.forEach(r => roomMap[r.id] = r);
+
+            document.getElementById('room-feed').innerHTML = recent.map((room, i) => {
                 const decay = room.entropy?.score || 0;
                 const decayPct = Math.round(decay * 100);
                 const decayColor = decay > 0.7 ? '#ee6868' : decay > 0.4 ? '#eedd68' : '#4ade80';
@@ -386,7 +435,32 @@
                     : '';
                 const topicClass = topicColors[room.topic] || 'topic-tech';
 
-                return `<div class="room-card">
+                // Full raw text
+                const fullRaw = room.fragments?.raw || 'no source data';
+
+                // Connected rooms
+                const connections = (room.connections || []).slice(0, 8).map(id => {
+                    const connected = roomMap[id];
+                    return connected ? connected.name : id;
+                });
+
+                // Dimensions
+                const dims = room.dimensions
+                    ? `${room.dimensions.width?.toFixed(1)} × ${room.dimensions.height?.toFixed(1)} × ${room.dimensions.depth?.toFixed(1)}`
+                    : '—';
+
+                // Archetype
+                const arch = room.archetype
+                    ? `${room.archetype.wallTexture || '—'} · ${room.archetype.ambience || '—'}`
+                    : '—';
+
+                // Time
+                const age = getTimeAgo(room.entropy?.createdAt);
+
+                // Scrambled sentences
+                const sentences = (room.fragments?.sentences || []).slice(0, 3);
+
+                return `<div class="room-card" onclick="toggleRoom(${i})">
                     <div class="room-name">${room.name}</div>
                     <div class="room-meta">
                         <span class="room-topic ${topicClass}">${room.topic}</span>
@@ -395,6 +469,24 @@
                         ${decayPct}% decay
                     </div>
                     ${fragment ? `<div class="room-fragment">${fragment}</div>` : ''}
+                    <div class="room-expanded" id="room-exp-${i}">
+                        <div class="room-detail">source: <span>${escHtml(fullRaw)}</span></div>
+                        <div class="room-detail">age: <span>${age}</span></div>
+                        <div class="room-detail">dimensions: <span>${dims}</span></div>
+                        <div class="room-detail">archetype: <span>${arch}</span></div>
+                        <div class="room-detail">virality: <span>${room.virality?.toFixed(2) || '—'}</span></div>
+                        <div class="room-detail">entropy half-life: <span>${room.entropy?.halfLife ? Math.round(room.entropy.halfLife) + 's' : '—'}</span></div>
+                        ${connections.length > 0 ? `
+                        <div class="room-detail">connected to:</div>
+                        <div class="room-connections">
+                            ${connections.map(c => `<span class="room-connection">${c}</span>`).join('')}
+                        </div>` : ''}
+                        ${sentences.length > 0 ? `
+                        <div class="room-sentences">
+                            <div class="room-detail">wall fragments:</div>
+                            ${sentences.map(s => `<div class="room-sentence">${escHtml(s)}</div>`).join('')}
+                        </div>` : ''}
+                    </div>
                 </div>`;
             }).join('');
 
@@ -428,6 +520,17 @@
         if (hours < 1) return 'just now';
         if (hours < 24) return hours + 'h ago';
         return Math.floor(hours / 24) + 'd ago';
+    }
+
+    function toggleRoom(i) {
+        const el = document.getElementById('room-exp-' + i);
+        if (el) el.classList.toggle('open');
+    }
+
+    function escHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 
     loadWorld();
