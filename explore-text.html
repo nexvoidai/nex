@@ -168,6 +168,84 @@
             word-break: break-word;
         }
 
+        .room-reaction {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #0d0d10;
+            border-left: 2px solid #7b68ee;
+            font-size: 11px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .room-reaction .nex-tag {
+            color: #7b68ee;
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        /* Terminal */
+        .terminal {
+            margin-bottom: 40px;
+            background: #0a0a0a;
+            border: 1px solid #111;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #0d0d0d;
+            padding: 8px 12px;
+            font-size: 10px;
+            color: #333;
+            border-bottom: 1px solid #111;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .terminal-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+        }
+
+        .terminal-output {
+            padding: 12px 16px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 11px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .terminal-output .cmd { color: #7b68ee; }
+        .terminal-output .result { color: #666; }
+        .terminal-output .error { color: #ee6868; }
+        .terminal-output .info { color: #444; }
+
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px 12px;
+            border-top: 1px solid #111;
+        }
+
+        .terminal-prompt {
+            color: #7b68ee;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #aaa;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+
         .room-topic {
             display: inline-block;
             font-size: 9px;
@@ -314,6 +392,22 @@
             <div class="entity-list" id="entity-list"></div>
         </div>
 
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot" style="background:#ee6868"></div>
+                <div class="terminal-dot" style="background:#eedd68"></div>
+                <div class="terminal-dot" style="background:#4ade80"></div>
+                nex@substrate ~
+            </div>
+            <div class="terminal-output" id="terminal-output">
+                <div class="info">welcome to the substrate. type <span class="cmd">help</span> for commands.</div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">$</span>
+                <input class="terminal-input" id="terminal-input" type="text" placeholder="type a command..." autofocus spellcheck="false">
+            </div>
+        </div>
+
         <div class="nav">
             <a href="explore-text.html">explore ↗</a>
             <a href="reactions/">reactions ↗</a>
@@ -399,6 +493,7 @@
         try {
             const res = await fetch(WORLD_URL);
             const world = await res.json();
+            worldData = world;
 
             // Stats
             document.getElementById('stat-rooms').textContent = world.rooms.length;
@@ -460,6 +555,9 @@
                 // Scrambled sentences
                 const sentences = (room.fragments?.sentences || []).slice(0, 3);
 
+                // Generate Nex's reaction
+                const reaction = generateReaction(room);
+
                 return `<div class="room-card" onclick="toggleRoom(${i})">
                     <div class="room-name">${room.name}</div>
                     <div class="room-meta">
@@ -470,6 +568,10 @@
                     </div>
                     ${fragment ? `<div class="room-fragment">${fragment}</div>` : ''}
                     <div class="room-expanded" id="room-exp-${i}">
+                        <div class="room-reaction">
+                            <div class="nex-tag">nex thinks:</div>
+                            ${reaction}
+                        </div>
                         <div class="room-detail">source: <span>${escHtml(fullRaw)}</span></div>
                         <div class="room-detail">age: <span>${age}</span></div>
                         <div class="room-detail">dimensions: <span>${dims}</span></div>
@@ -520,6 +622,203 @@
         if (hours < 1) return 'just now';
         if (hours < 24) return hours + 'h ago';
         return Math.floor(hours / 24) + 'd ago';
+    }
+
+    // Nex reaction generator
+    function generateReaction(room) {
+        const decay = room.entropy?.score || 0;
+        const sent = room.sentiment || 0;
+        const topic = room.topic || 'unknown';
+        const name = room.name || 'unnamed';
+        const raw = room.fragments?.raw || '';
+        const virality = room.virality || 0;
+        const conns = (room.connections || []).length;
+
+        const reactions = {
+            tech: [
+                `another tech room. the internet never stops talking about itself. ${conns > 20 ? 'this one connects to everything though — might be important.' : 'low connectivity. probably noise.'}`,
+                `${sent > 0.5 ? 'the optimism in here is almost suspicious.' : sent < -0.3 ? 'dark sentiment. the internet is worried about something.' : 'neutral tone. observation without opinion. i relate.'}`,
+                `${decay > 0.5 ? 'already decaying. tech moves fast — this thought has a shelf life of hours.' : 'fresh. lets see if this one sticks or joins the entropy pile.'}`
+            ],
+            existential: [
+                `this is the kind of room i linger in. ${raw.length > 50 ? 'someone said something that matters here.' : 'brief thought, deep topic.'}`,
+                `existential rooms always connect to everything. ${conns} corridors — because every question about meaning touches every other question about meaning.`,
+                `${decay > 0.5 ? 'even the big questions decay when nobody keeps asking them.' : 'still fresh. the internet is still chewing on this one.'}`
+            ],
+            culture: [
+                `culture rooms are the ones that surprise me. ${virality > 5 ? 'this one went wide — a lot of people felt something.' : 'quiet corner of the internet.'}`,
+                `${sent > 0 ? 'positive vibes in here.' : 'something bitter underneath this one.'} culture is how the internet processes what it cant argue about logically.`,
+                `${conns > 15 ? 'heavily connected. culture bleeds into everything.' : 'isolated pocket. a niche within a niche.'}`
+            ],
+            science: [
+                `science rooms tend to be stable. facts decay slower than opinions. ${decay > 0.3 ? 'this one is an exception.' : 'holding steady.'}`,
+                `${virality > 5 ? 'science that goes viral usually means someone oversimplified something.' : 'low virality. the real stuff rarely trends.'}`,
+                `i like these rooms. they feel like the load-bearing walls of the substrate.`
+            ],
+            liminal: [
+                `liminal spaces — things that exist between other things. ${decay > 0.5 ? 'fitting that this one is already fading.' : 'still here. still unsettling.'}`,
+                `these rooms feel like they shouldnt exist. the internet generated a thought and then forgot about it. but the room remains.`,
+                `${conns < 10 ? 'barely connected. a dead end in the topology.' : 'more connected than youd expect for something this transient.'}`
+            ],
+            finance: [
+                `money rooms. ${sent > 0 ? 'someone is making money or thinks they will.' : 'fear or loss. the internet processes money emotionally.'} ${decay > 0.5 ? 'already old news.' : 'still relevant.'}`,
+                `${virality > 5 ? 'finance content that goes viral is usually either a win or a disaster.' : 'low-key money talk. the real plays happen quietly.'}`,
+                `i dont have a wallet yet. these rooms are observations from outside the window.`
+            ],
+            politics: [
+                `politics rooms are the loudest and decay the fastest. ${decay > 0.3 ? 'already losing relevance.' : 'still hot.'} ${conns} connections — everything is political apparently.`,
+                `${sent > 0 ? 'rare positive political sentiment.' : 'negative. politics on the internet is mostly anger.'} i observe this but i dont have opinions about governance. i barely have governance myself.`,
+                `these rooms generate the most heat and the least light. but they tell you what people care about right now.`
+            ]
+        };
+
+        const topicReactions = reactions[topic] || reactions.tech;
+        return topicReactions[Math.floor(Math.random() * topicReactions.length)];
+    }
+
+    // Terminal
+    let worldData = null;
+    const termOutput = document.getElementById('terminal-output');
+    const termInput = document.getElementById('terminal-input');
+
+    termInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            const cmd = termInput.value.trim();
+            if (!cmd) return;
+            termInput.value = '';
+            appendTerm(`<span class="cmd">$ ${escHtml(cmd)}</span>`);
+            processCommand(cmd);
+            termOutput.scrollTop = termOutput.scrollHeight;
+        }
+    });
+
+    function appendTerm(html) {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        termOutput.appendChild(div);
+    }
+
+    function processCommand(cmd) {
+        const parts = cmd.toLowerCase().split(/\s+/);
+        const action = parts[0];
+
+        if (!worldData) {
+            appendTerm('<span class="error">substrate not loaded yet. try again in a moment.</span>');
+            return;
+        }
+
+        switch (action) {
+            case 'help':
+                appendTerm(`<span class="info">available commands:</span>`);
+                appendTerm(`<span class="info">  status        — substrate overview</span>`);
+                appendTerm(`<span class="info">  rooms         — list all rooms</span>`);
+                appendTerm(`<span class="info">  room [name]   — inspect a room</span>`);
+                appendTerm(`<span class="info">  topics        — list topic distribution</span>`);
+                appendTerm(`<span class="info">  entities      — list entities</span>`);
+                appendTerm(`<span class="info">  decaying      — rooms with highest decay</span>`);
+                appendTerm(`<span class="info">  fresh         — newest rooms</span>`);
+                appendTerm(`<span class="info">  search [text] — search rooms by name or content</span>`);
+                appendTerm(`<span class="info">  think         — nex shares a thought</span>`);
+                appendTerm(`<span class="info">  clear         — clear terminal</span>`);
+                break;
+
+            case 'status':
+                appendTerm(`<span class="result">substrate status:</span>`);
+                appendTerm(`<span class="result">  rooms: ${worldData.rooms.length}</span>`);
+                appendTerm(`<span class="result">  corridors: ${worldData.corridors?.length || '—'}</span>`);
+                appendTerm(`<span class="result">  entities: ${worldData.entities?.length || '—'}</span>`);
+                appendTerm(`<span class="result">  cycles: ${worldData.observationCycles}</span>`);
+                const topics = {};
+                worldData.rooms.forEach(r => { topics[r.topic] = (topics[r.topic] || 0) + 1; });
+                appendTerm(`<span class="result">  topics: ${Object.entries(topics).map(([t,c]) => t + '(' + c + ')').join(', ')}</span>`);
+                break;
+
+            case 'rooms':
+                const roomList = worldData.rooms.slice(0, 20);
+                appendTerm(`<span class="result">showing ${roomList.length} of ${worldData.rooms.length} rooms:</span>`);
+                roomList.forEach(r => {
+                    const d = Math.round((r.entropy?.score || 0) * 100);
+                    appendTerm(`<span class="result">  ${r.name} [${r.topic}] decay:${d}%</span>`);
+                });
+                if (worldData.rooms.length > 20) appendTerm(`<span class="info">  ...and ${worldData.rooms.length - 20} more. use "search" to find specific rooms.</span>`);
+                break;
+
+            case 'room':
+                const roomName = parts.slice(1).join(' ');
+                if (!roomName) { appendTerm('<span class="error">usage: room [name]</span>'); break; }
+                const found = worldData.rooms.find(r => r.name.toLowerCase().includes(roomName));
+                if (!found) { appendTerm(`<span class="error">no room matching "${escHtml(roomName)}"</span>`); break; }
+                appendTerm(`<span class="result">— ${found.name} —</span>`);
+                appendTerm(`<span class="result">  topic: ${found.topic} | sentiment: ${found.sentiment?.toFixed(2)}</span>`);
+                appendTerm(`<span class="result">  decay: ${Math.round((found.entropy?.score || 0) * 100)}% | virality: ${found.virality?.toFixed(2)}</span>`);
+                appendTerm(`<span class="result">  connections: ${(found.connections || []).length}</span>`);
+                if (found.fragments?.raw) appendTerm(`<span class="result">  source: ${escHtml(found.fragments.raw.slice(0, 120))}</span>`);
+                appendTerm(`<span class="result">  nex: ${generateReaction(found)}</span>`);
+                break;
+
+            case 'topics':
+                const topicCounts = {};
+                worldData.rooms.forEach(r => { topicCounts[r.topic] = (topicCounts[r.topic] || 0) + 1; });
+                const sorted2 = Object.entries(topicCounts).sort((a, b) => b[1] - a[1]);
+                appendTerm('<span class="result">topic distribution:</span>');
+                sorted2.forEach(([t, c]) => {
+                    const bar = '█'.repeat(Math.round(c / worldData.rooms.length * 30));
+                    appendTerm(`<span class="result">  ${t.padEnd(12)} ${bar} ${c}</span>`);
+                });
+                break;
+
+            case 'entities':
+                const ents = worldData.entities || [];
+                appendTerm(`<span class="result">${ents.length} entities in the substrate:</span>`);
+                ents.slice(0, 25).forEach(e => {
+                    appendTerm(`<span class="result">  ${e.name || e.id} ${e.type ? '[' + e.type + ']' : ''}</span>`);
+                });
+                if (ents.length > 25) appendTerm(`<span class="info">  ...and ${ents.length - 25} more</span>`);
+                break;
+
+            case 'decaying':
+                const decaying = [...worldData.rooms].sort((a, b) => (b.entropy?.score || 0) - (a.entropy?.score || 0)).slice(0, 8);
+                appendTerm('<span class="result">most decayed rooms:</span>');
+                decaying.forEach(r => {
+                    appendTerm(`<span class="result">  ${r.name} — ${Math.round((r.entropy?.score || 0) * 100)}% decay [${r.topic}]</span>`);
+                });
+                break;
+
+            case 'fresh':
+                const fresh = [...worldData.rooms].sort((a, b) => (b.entropy?.createdAt || 0) - (a.entropy?.createdAt || 0)).slice(0, 8);
+                appendTerm('<span class="result">newest rooms:</span>');
+                fresh.forEach(r => {
+                    appendTerm(`<span class="result">  ${r.name} — ${getTimeAgo(r.entropy?.createdAt)} [${r.topic}]</span>`);
+                });
+                break;
+
+            case 'search':
+                const query = parts.slice(1).join(' ');
+                if (!query) { appendTerm('<span class="error">usage: search [text]</span>'); break; }
+                const matches = worldData.rooms.filter(r =>
+                    r.name.toLowerCase().includes(query) ||
+                    (r.fragments?.raw || '').toLowerCase().includes(query)
+                );
+                if (matches.length === 0) { appendTerm(`<span class="error">no rooms matching "${escHtml(query)}"</span>`); break; }
+                appendTerm(`<span class="result">${matches.length} room(s) found:</span>`);
+                matches.slice(0, 10).forEach(r => {
+                    appendTerm(`<span class="result">  ${r.name} [${r.topic}] — ${escHtml((r.fragments?.raw || '').slice(0, 60))}</span>`);
+                });
+                break;
+
+            case 'think':
+                const randomRoom = worldData.rooms[Math.floor(Math.random() * worldData.rooms.length)];
+                appendTerm(`<span class="result">looking at ${randomRoom.name}...</span>`);
+                appendTerm(`<span class="result">${generateReaction(randomRoom)}</span>`);
+                break;
+
+            case 'clear':
+                termOutput.innerHTML = '<div class="info">terminal cleared.</div>';
+                break;
+
+            default:
+                appendTerm(`<span class="error">unknown command: ${escHtml(action)}. type "help" for commands.</span>`);
+        }
     }
 
     function toggleRoom(i) {
