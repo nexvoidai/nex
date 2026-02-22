@@ -44,6 +44,32 @@ async function main() {
   // Save
   world.save(statePath);
 
+  // Generate lightweight summary for M5Stack
+  const state = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+  const topics = {};
+  let highDecay = 0;
+  const recentRooms = [];
+  for (const r of state.rooms) {
+    topics[r.topic] = (topics[r.topic] || 0) + 1;
+    if (r.entropy > 0.7) highDecay++;
+  }
+  for (const r of state.rooms.slice(-10)) {
+    recentRooms.push({ name: r.name, topic: r.topic, comment: (r.commentary || '').substring(0, 60) });
+  }
+  const m5summary = {
+    rooms: state.rooms.length,
+    corridors: state.corridors.length,
+    entities: state.entities.length,
+    cycles: state.observationCycles,
+    highDecay,
+    topics,
+    recentRooms,
+    updatedAt: Date.now()
+  };
+  const summaryPath = path.join(path.dirname(statePath), '..', 'world-summary.json');
+  fs.writeFileSync(summaryPath, JSON.stringify(m5summary));
+  console.log(`M5Stack summary written to ${summaryPath}`);
+
   // Print summary
   const summary = world.summary();
   console.log('');
