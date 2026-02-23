@@ -54,7 +54,7 @@ class World {
    * Save world state to file
    */
   save(filePath) {
-    fs.writeFileSync(filePath, JSON.stringify(this.state, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify(this.state));
     console.log(`Saved world: ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors`);
   }
 

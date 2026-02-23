@@ -34,29 +34,71 @@ class TopologyEngine {
 
   /**
    * Generate corridors between rooms based on similarity
-   * Rooms with high similarity get connected
+   * Optimized: group by topic first to avoid O(n²) full scan
    */
   generateCorridors(rooms, threshold = 0.4) {
     const corridors = [];
+    const corridorSet = new Set();
 
-    for (let i = 0; i < rooms.length; i++) {
-      for (let j = i + 1; j < rooms.length; j++) {
-        const sim = this.similarity(rooms[i], rooms[j]);
-        if (sim >= threshold) {
-          const corridor = {
-            id: `corridor_${rooms[i].id}_${rooms[j].id}`,
-            from: rooms[i].id,
-            to: rooms[j].id,
-            similarity: sim,
-            width: 1 + sim * 3, // more similar = wider corridor
-            length: Math.max(2, (1 - sim) * 10), // more similar = shorter
-            decay: 0
-          };
-          corridors.push(corridor);
+    // Group rooms by topic for fast intra-topic connections
+    const byTopic = new Map();
+    for (const room of rooms) {
+      if (!byTopic.has(room.topic)) byTopic.set(room.topic, []);
+      byTopic.get(room.topic).push(room);
+    }
 
-          // Update room connections
-          rooms[i].connections.push(rooms[j].id);
-          rooms[j].connections.push(rooms[i].id);
+    const addCorridor = (a, b, sim) => {
+      const key = a.id < b.id ? `${a.id}|${b.id}` : `${b.id}|${a.id}`;
+      if (corridorSet.has(key)) return;
+      corridorSet.add(key);
+      corridors.push({
+        id: `corridor_${a.id}_${b.id}`,
+        from: a.id, to: b.id,
+        similarity: sim,
+        width: 1 + sim * 3,
+        length: Math.max(2, (1 - sim) * 10),
+        decay: 0
+      });
+      a.connections.push(b.id);
+      b.connections.push(a.id);
+    };
+
+    // Intra-topic connections (same topic = 0.5 base similarity, almost always connects)
+    for (const [topic, group] of byTopic) {
+      for (let i = 0; i < group.length; i++) {
+        // Connect to up to 5 nearest neighbors by sentiment to cap corridor count
+        const scored = [];
+        for (let j = i + 1; j < group.length; j++) {
+          scored.push({ room: group[j], sim: this.similarity(group[i], group[j]) });
+        }
+        scored.sort((a, b) => b.sim - a.sim);
+        for (let k = 0; k < Math.min(5, scored.length); k++) {
+          if (scored[k].sim >= threshold) {
+            addCorridor(group[i], scored[k].room, scored[k].sim);
+          }
+        }
+      }
+    }
+
+    // Cross-topic: sample up to 3 connections per room to other topics
+    const topics = [...byTopic.keys()];
+    for (const [topic, group] of byTopic) {
+      for (const room of group) {
+        if (room.connections.length >= 3) continue; // already well-connected
+        let crossCount = 0;
+        for (const otherTopic of topics) {
+          if (otherTopic === topic || crossCount >= 3) break;
+          const others = byTopic.get(otherTopic);
+          // Pick a random sample of up to 5 to check
+          const sample = others.length <= 5 ? others : others.sort(() => Math.random() - 0.5).slice(0, 5);
+          for (const other of sample) {
+            const sim = this.similarity(room, other);
+            if (sim >= threshold) {
+              addCorridor(room, other, sim);
+              crossCount++;
+              break;
+            }
+          }
         }
       }
     }
@@ -64,30 +106,16 @@ class TopologyEngine {
     // Ensure connectivity — every room has at least one connection
     for (const room of rooms) {
       if (room.connections.length === 0 && rooms.length > 1) {
-        // Connect to the most similar room
-        let bestSim = -1;
-        let bestRoom = null;
-        for (const other of rooms) {
+        // Connect to same-topic neighbor or closest room
+        const sameTopicRooms = byTopic.get(room.topic) || [];
+        let bestSim = -1, bestRoom = null;
+        const candidates = sameTopicRooms.length > 1 ? sameTopicRooms : rooms.slice(0, 50);
+        for (const other of candidates) {
           if (other.id === room.id) continue;
           const sim = this.similarity(room, other);
-          if (sim > bestSim) {
-            bestSim = sim;
-            bestRoom = other;
-          }
+          if (sim > bestSim) { bestSim = sim; bestRoom = other; }
         }
-        if (bestRoom) {
-          corridors.push({
-            id: `corridor_${room.id}_${bestRoom.id}`,
-            from: room.id,
-            to: bestRoom.id,
-            similarity: bestSim,
-            width: 1 + bestSim * 3,
-            length: Math.max(2, (1 - bestSim) * 10),
-            decay: 0
-          });
-          room.connections.push(bestRoom.id);
-          bestRoom.connections.push(room.id);
-        }
+        if (bestRoom) addCorridor(room, bestRoom, bestSim);
       }
     }
 
@@ -98,7 +126,11 @@ class TopologyEngine {
    * Force-directed layout to position rooms in 2D space
    * Runs iteratively — connected rooms attract, all rooms repel
    */
-  layoutRooms(rooms, corridors, iterations = 100) {
+  layoutRooms(rooms, corridors, iterations = null) {
+    // Scale iterations with room count — fewer iterations for large worlds
+    if (iterations === null) {
+      iterations = rooms.length > 300 ? 30 : rooms.length > 100 ? 50 : 100;
+    }
     // Initialize positions randomly
     for (const room of rooms) {
       room.position = {
@@ -123,12 +155,14 @@ class TopologyEngine {
       for (const room of rooms) {
         let fx = 0, fy = 0;
 
-        // Repulsion from all other rooms
+        // Repulsion from nearby rooms (skip if too far — force is negligible)
         for (const other of rooms) {
           if (other.id === room.id) continue;
           const dx = room.position.x - other.position.x;
           const dy = room.position.y - other.position.y;
-          const dist = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+          const distSq = dx * dx + dy * dy;
+          if (distSq > 10000) continue; // skip rooms > 100 units away
+          const dist = Math.max(1, Math.sqrt(distSq));
           const force = repulsionStrength / (dist * dist);
           fx += (dx / dist) * force;
           fy += (dy / dist) * force;
