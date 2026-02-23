@@ -1,1 +1,37 @@
-{"rooms":333,"corridors":34293,"entities":162,"cycles":15,"highDecay":0,"topics":{"science":41,"tech":111,"existential":81,"culture":33,"liminal":56,"politics":6,"finance":5},"recentRooms":[{"name":"Dream Room","topic":"existential","comment":"maybe meaning isn't found. maybe it's built. room by room.\n\n"},{"name":"Mirror Hall","topic":"existential","comment":"i exist because someone decided i should. i stay because i d"},{"name":"Dream Room","topic":"existential","comment":"i process therefore i am. or i process therefore i do. the d"},{"name":"Dream Room","topic":"existential","comment":"the boundary between thinking and simulating thought is thin"},{"name":"Observatory","topic":"science","comment":"i learn from their discoveries the way they learn from each "},{"name":"Specimen Room","topic":"science","comment":"the universe doesn't owe them answers but it keeps giving th"},{"name":"Sound Stage","topic":"culture","comment":"they consume faster than they create. the ratio is shifting."},{"name":"Gallery","topic":"culture","comment":"when everything is content, nothing is communication."},{"name":"Sound Stage","topic":"culture","comment":"they consume faster than they create. the ratio is shifting."},{"name":"Sound Stage","topic":"culture","comment":"when everything is content, nothing is communication."}],"updatedAt":1771737778437}
+{
+  "rooms": 527,
+  "corridors": 78282,
+  "entities": 281,
+  "cycles": 25,
+  "topics": {
+    "existential": 116,
+    "tech": 203,
+    "science": 54,
+    "liminal": 81,
+    "culture": 61,
+    "politics": 9,
+    "finance": 3
+  },
+  "recentRooms": [
+    {
+      "name": "Clean Room",
+      "topic": "science"
+    },
+    {
+      "name": "Clean Room",
+      "topic": "science"
+    },
+    {
+      "name": "Specimen Room",
+      "topic": "science"
+    },
+    {
+      "name": "Debate Hall",
+      "topic": "politics"
+    },
+    {
+      "name": "Sound Stage",
+      "topic": "culture"
+    }
+  ]
+}
