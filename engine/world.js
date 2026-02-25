@@ -13,6 +13,9 @@ const { TopologyEngine } = require('./topology');
 const { DecayEngine } = require('./decay');
 const { CommentaryGenerator } = require('./commentary');
 const { EntityTracker } = require('./entities');
+const { PruneEngine } = require('./prune');
+const { EventTracker } = require('./events');
+const { MemoryEngine } = require('./memory');
 
 class World {
   constructor(configPath) {
@@ -23,7 +26,7 @@ class World {
     this.entityTracker = new EntityTracker();
 
     this.state = {
-      version: 1,
+      version: 2,
       createdAt: Date.now(),
       lastUpdate: null,
       observationCycles: 0,
@@ -43,6 +46,9 @@ class World {
       const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
       this.state = data;
       if (!this.state.entities) this.state.entities = [];
+      if (!this.state.events) this.state.events = [];
+      if (!this.state.memory) this.state.memory = { topicHistory: [], totalRoomHistory: [], maxHistoryLength: 50 };
+      if (!this.state.artifacts) this.state.artifacts = [];
       this.entityTracker.load(this.state.entities);
       console.log(`Loaded world: ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors, ${this.state.entities.length} entities`);
     } catch (e) {
@@ -62,12 +68,12 @@ class World {
    * Run a full observation + generation cycle
    */
   async cycle(queries) {
-    console.log('--- Observation Cycle ---');
+    console.log('--- Observation Cycle v2.0 ---');
 
     // 1. Observe
-    console.log('Observing Twitter...');
+    console.log('1. Observing Twitter...');
     const observations = await this.observer.observe(queries);
-    console.log(`Got ${observations.length} observations`);
+    console.log(`   Got ${observations.length} observations`);
 
     if (observations.length === 0) {
       console.log('No observations to process.');
@@ -75,48 +81,57 @@ class World {
     }
 
     // 2. Generate rooms
-    console.log('Generating rooms...');
+    console.log('2. Generating rooms...');
     const newRooms = this.roomGen.generateRooms(observations);
-    console.log(`Generated ${newRooms.length} new rooms`);
+    console.log(`   Generated ${newRooms.length} new rooms`);
 
-    // 3. Decay existing rooms
+    // 3. Track entities
+    console.log('3. Tracking entities...');
+    const newEntities = this.entityTracker.update(observations);
+    if (newEntities.length > 0) {
+      console.log(`   New entities: ${newEntities.map(e => e.name).join(', ')}`);
+    }
+
+    // 4. Decay existing rooms
     if (this.state.rooms.length > 0) {
-      console.log('Running decay...');
+      console.log('4. Running decay...');
       const { active, decayed, collapsed } = DecayEngine.tick(this.state.rooms);
       DecayEngine.applyEffects([...active, ...decayed]);
 
-      // Harvest fragments from collapsed rooms
       for (const room of collapsed) {
         const artifact = DecayEngine.harvestFragments(room);
         this.state.artifacts.push(artifact);
-        console.log(`Room "${room.name}" (${room.id}) collapsed into void`);
+        console.log(`   Room "${room.name}" (${room.id}) collapsed into void`);
       }
 
-      // Keep only non-collapsed rooms
       this.state.rooms = [...active, ...decayed];
     }
 
-    // 4. Generate Nex commentary for new rooms
-    console.log('Generating commentary...');
-    CommentaryGenerator.annotateRooms(newRooms);
+    // 5. Prune stale rooms (v2.0)
+    console.log('5. Pruning stale rooms...');
+    PruneEngine.refreshRooms(this.state.rooms, newRooms, this.state.observationCycles);
+    const pruneResult = PruneEngine.prune(this.state);
+    if (pruneResult.pruned.length > 0) {
+      console.log(`   Pruned ${pruneResult.pruned.length} stale rooms`);
+      this.state.rooms = pruneResult.kept;
+      this.state.artifacts.push(...pruneResult.fragments);
+    } else {
+      console.log('   No rooms to prune');
+    }
 
-    // 5. Add new rooms
+    // 6. Add new rooms + commentary
+    console.log('6. Generating commentary...');
+    CommentaryGenerator.annotateRooms(newRooms);
     this.state.rooms.push(...newRooms);
 
-    // 6. Track entities
-    console.log('Tracking entities...');
-    const newEntities = this.entityTracker.update(observations);
-    if (newEntities.length > 0) {
-      console.log(`New entities: ${newEntities.map(e => e.name).join(', ')}`);
-    }
+    // 7. Entity wandering
     this.entityTracker.wander(this.state.rooms);
     this.state.entities = this.entityTracker.toArray();
     const entitySummary = this.entityTracker.summary();
-    console.log(`Entities: ${entitySummary.total} (${entitySummary.people} people, ${entitySummary.concepts} concepts)`);
+    console.log(`   Entities: ${entitySummary.total} (${entitySummary.people} people, ${entitySummary.concepts} concepts)`);
 
-    // 7. Rebuild topology with all rooms
-    console.log('Building topology...');
-    // Reset connections before rebuilding
+    // 8. Rebuild topology
+    console.log('7. Building topology...');
     for (const room of this.state.rooms) {
       room.connections = [];
     }
@@ -124,11 +139,37 @@ class World {
     this.state.corridors = topo.corridors;
     this.state.stats = topo.stats;
 
-    // 8. Update metadata
-    this.state.lastUpdate = Date.now();
-    this.state.observationCycles++;
+    // 9. Track events (v2.0)
+    console.log('8. Tracking events...');
+    const newEvents = EventTracker.detect(this.state, {
+      newRooms,
+      prunedRooms: pruneResult.pruned,
+      pruneEvents: pruneResult.events
+    });
+    EventTracker.record(this.state, newEvents);
+    if (newEvents.length > 0) {
+      console.log(`   ${newEvents.length} events recorded`);
+    }
 
-    console.log(`World now has ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors`);
+    // 10. Update memory (v2.0)
+    console.log('9. Updating memory...');
+    this.state.observationCycles++;
+    MemoryEngine.update(this.state);
+    const trends = MemoryEngine.analyzeTrends(this.state);
+    if (trends.insights.length > 0) {
+      console.log(`   Trends: ${trends.insights.join('; ')}`);
+    }
+
+    // 11. Cross-room commentary (v2.0)
+    console.log('10. Cross-room commentary...');
+    const crossComm = CommentaryGenerator.crossRoomCommentary(this.state, trends);
+    console.log(crossComm);
+
+    // 12. Update metadata
+    this.state.lastUpdate = Date.now();
+    this.state.version = 2;
+
+    console.log(`\nWorld now has ${this.state.rooms.length} rooms, ${this.state.corridors.length} corridors`);
     console.log(`Topics: ${this.state.stats.topics.join(', ')}`);
     console.log(`Avg sentiment: ${this.state.stats.avgSentiment.toFixed(2)}`);
 
@@ -148,11 +189,13 @@ class World {
       cycles: s.observationCycles,
       topics: s.stats.topics || [],
       avgSentiment: (s.stats.avgSentiment || 0).toFixed(2),
+      events: (s.events || []).length,
+      memorySnapshots: (s.memory && s.memory.topicHistory) ? s.memory.topicHistory.length : 0,
       oldestRoom: s.rooms.length > 0
-        ? s.rooms.reduce((oldest, r) => r.entropy.createdAt < oldest.entropy.createdAt ? r : oldest).name
+        ? s.rooms.reduce((oldest, r) => (r.entropy && r.entropy.createdAt || Infinity) < (oldest.entropy && oldest.entropy.createdAt || Infinity) ? r : oldest).name
         : null,
       mostDecayed: s.rooms.length > 0
-        ? s.rooms.reduce((worst, r) => r.entropy.score > worst.entropy.score ? r : worst).name
+        ? s.rooms.reduce((worst, r) => (r.entropy && r.entropy.score || 0) > (worst.entropy && worst.entropy.score || 0) ? r : worst).name
         : null
     };
   }

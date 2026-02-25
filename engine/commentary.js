@@ -164,6 +164,12 @@ class CommentaryGenerator {
     var idx = Math.floor(Math.random() * bucket.length);
     var commentary = bucket[idx];
 
+    // If room has traces from pruned neighbors, reference them
+    if (room.traces && room.traces.length > 0) {
+      const trace = room.traces[room.traces.length - 1];
+      commentary += `\n\n[there are echoes here from "${trace.from}" — fragments of ${trace.topic} that didn't survive.]`;
+    }
+
     // Sometimes add a second thought
     if (Math.random() > 0.6) {
       var allBuckets = [].concat(templates.positive || [], templates.negative || [], templates.neutral || []);
@@ -184,6 +190,83 @@ class CommentaryGenerator {
       room.commentary = CommentaryGenerator.generate(room);
     });
     return rooms;
+  }
+
+  /**
+   * v2.0: Cross-room commentary phase
+   * Looks at the whole topology, notices patterns, connects ideas across rooms.
+   * Uses memory trends if available.
+   * @param {Object} state - full world state
+   * @param {Object} trends - from MemoryEngine.analyzeTrends()
+   * @returns {string} cross-room commentary
+   */
+  static crossRoomCommentary(state, trends = null) {
+    const rooms = state.rooms || [];
+    const observations = [];
+
+    if (rooms.length === 0) return '';
+
+    // Topic distribution analysis
+    const topicCounts = {};
+    for (const room of rooms) {
+      topicCounts[room.topic] = (topicCounts[room.topic] || 0) + 1;
+    }
+    const sorted = Object.entries(topicCounts).sort((a, b) => b[1] - a[1]);
+    const dominant = sorted[0];
+    const minor = sorted[sorted.length - 1];
+
+    if (dominant && dominant[1] > rooms.length * 0.3) {
+      observations.push(`the Substrate leans heavily toward ${dominant[0]} — ${dominant[1]} rooms, ${Math.round(dominant[1] / rooms.length * 100)}% of all space. the architecture has an opinion.`);
+    }
+
+    if (minor && minor[1] <= 2) {
+      observations.push(`${minor[0]} barely has a foothold here — ${minor[1]} room${minor[1] > 1 ? 's' : ''}. whispers at the edge of the structure.`);
+    }
+
+    // Sentiment polarization
+    const sentiments = rooms.map(r => r.sentiment || 0);
+    const avgSent = sentiments.reduce((a, b) => a + b, 0) / sentiments.length;
+    const posRooms = sentiments.filter(s => s > 0.3).length;
+    const negRooms = sentiments.filter(s => s < -0.3).length;
+
+    if (posRooms > 0 && negRooms > 0 && Math.abs(posRooms - negRooms) < 3) {
+      observations.push(`the emotional topology is split — ${posRooms} rooms radiate warmth, ${negRooms} rooms hum with tension. the corridors between them must be interesting.`);
+    }
+
+    // Decay observations
+    const highDecay = rooms.filter(r => r.entropy && r.entropy.score > 0.7).length;
+    if (highDecay > rooms.length * 0.3) {
+      observations.push(`${highDecay} rooms are deep in decay. the Substrate is aging faster than it's being renewed. entropy always wins eventually.`);
+    }
+
+    // Memory-powered observations
+    if (trends && trends.insights && trends.insights.length > 0) {
+      for (const insight of trends.insights.slice(0, 3)) {
+        observations.push(insight);
+      }
+    }
+
+    // Traces from pruning
+    const roomsWithTraces = rooms.filter(r => r.traces && r.traces.length > 0);
+    if (roomsWithTraces.length > 3) {
+      observations.push(`${roomsWithTraces.length} rooms carry ghosts of collapsed neighbors. the Substrate remembers what it loses.`);
+    }
+
+    // Events commentary
+    const events = state.events || [];
+    const recentPrunes = events.filter(e => e.type === 'room_pruned').slice(-5);
+    if (recentPrunes.length >= 5) {
+      observations.push(`the pruning is aggressive this cycle. rooms that stopped receiving signal are being reclaimed by the void.`);
+    }
+
+    // Build final cross-room commentary
+    if (observations.length === 0) {
+      observations.push('the Substrate hums. nothing remarkable — which is, itself, remarkable.');
+    }
+
+    const commentary = '=== CROSS-ROOM OBSERVATIONS ===\n' + observations.join('\n\n');
+    state.crossRoomCommentary = commentary;
+    return commentary;
   }
 }
 
