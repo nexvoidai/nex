@@ -53,8 +53,8 @@ async function main() {
     topics[r.topic] = (topics[r.topic] || 0) + 1;
     if (r.entropy > 0.7) highDecay++;
   }
-  for (const r of state.rooms.slice(-10)) {
-    recentRooms.push({ name: r.name, topic: r.topic, comment: (r.commentary || '').substring(0, 60) });
+  for (const r of state.rooms.slice(-30)) {
+    recentRooms.push({ name: r.name, topic: r.topic, commentary: (r.commentary || '').substring(0, 120) });
   }
   const m5summary = {
     rooms: state.rooms.length,
@@ -66,9 +66,12 @@ async function main() {
     recentRooms,
     updatedAt: Date.now()
   };
+  // Write both filenames for compatibility
   const summaryPath = path.join(path.dirname(statePath), '..', 'world-summary.json');
+  const esp32Path = path.join(path.dirname(statePath), '..', 'esp32-summary.json');
   fs.writeFileSync(summaryPath, JSON.stringify(m5summary));
-  console.log(`M5Stack summary written to ${summaryPath}`);
+  fs.writeFileSync(esp32Path, JSON.stringify(m5summary));
+  console.log(`M5Stack summary written to ${summaryPath} and ${esp32Path}`);
 
   // Print summary
   const summary = world.summary();
