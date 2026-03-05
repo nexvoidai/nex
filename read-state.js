@@ -1,0 +1,11 @@
+const w = JSON.parse(require('fs').readFileSync('data/world-state.json', 'utf8'));
+const topics = {};
+w.rooms.forEach(r => { topics[r.topic] = (topics[r.topic] || 0) + 1; });
+console.log('Rooms:', w.rooms.length, 'Corridors:', w.corridors.length, 'Entities:', w.entities.length, 'Cycles:', w.cycles);
+console.log('Topics:', JSON.stringify(topics));
+console.log('--- RECENT 10 ROOMS ---');
+w.rooms.slice(-10).forEach(r => console.log(r.name, '|', r.topic, '|', (r.commentary || '').substring(0, 120)));
+console.log('--- DECAY ---');
+const decaying = w.rooms.filter(r => r.decay > 0.5).length;
+const dead = w.rooms.filter(r => r.decay >= 1).length;
+console.log('Decaying (>50%):', decaying, 'Fully decayed:', dead);
